@@ -20,29 +20,27 @@ import Watchlist from "../views/user/watchlist/Watchlist";
 
 const Router = () => {
   return (
-    <main className="main-container">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/movies" component={AllMovies} />
-          <Route path="/movies/:movieTitle" component={Movie} />
-          <Route exact path="/genres" component={AllGenres} />
-          <Route path="/genres/:genreName" component={Genre} />
-          <Route exact path="/directors" component={AllDirectors} />
-          <Route path="/directors/:directorName" component={Director} />
-          <Route exact path="/actors" component={AllActors} />
-          <Route path="/actors/:actorName" component={Actor} />
-          <Route exact path="/user" component={UserProfile} />
-          <Route exact path="/user/edit" component={UserEdit} />
-          <Route exact path="/user/favorites" component={Favorites} />
-          <Route exact path="/user/watchlist" component={Watchlist} />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
-    </main>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/movies" component={AllMovies} />
+        <Route path="/movies/:movieTitle" component={Movie} />
+        <Route exact path="/genres" component={AllGenres} />
+        <Route path="/genres/:genreName" component={Genre} />
+        <Route exact path="/directors" component={AllDirectors} />
+        <Route path="/directors/:directorName" component={Director} />
+        <Route exact path="/actors" component={AllActors} />
+        <Route path="/actors/:actorName" component={Actor} />
+        <Route exact path="/user" component={UserProfile} />
+        <Route exact path="/user/edit" component={UserEdit} />
+        <Route exact path="/user/favorites" component={Favorites} />
+        <Route exact path="/user/watchlist" component={Watchlist} />
+        <Route component={NotFound} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
