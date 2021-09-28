@@ -33,6 +33,10 @@ a {
   color: $pink;
 }
 
+#root {
+  z-index: 1;
+}
+
 .btn {
   background-image: linear-gradient(90deg, $pink, $light-purple, $purple);
   background-color: none;
