@@ -2,4 +2,17 @@
   &.bg-dark {
     background-color: #15142a8c !important;
   }
+  .navbar-brand {
+    img {
+      max-width: 130px;
+    }
+  }
+  a.nav-link {
+    color: $link-color;
+    padding: 10px 20px;
+    &:hover {
+      color: $light-purple !important;
+      text-shadow: 0 0 15px $light-purple;
+    }
+  }
 }

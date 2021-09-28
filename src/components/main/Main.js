@@ -1,13 +1,15 @@
 import React from "react";
 import Router from "../router/Router";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Main(props) {
   return (
     <main>
       <Container fluid className="main-container">
-        <Row>
-          <Router />
+        <Row className="justify-content-center">
+          <Col lg={8} md={10} sm={12}>
+            <Router />
+          </Col>
         </Row>
       </Container>
     </main>

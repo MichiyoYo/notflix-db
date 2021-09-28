@@ -9,6 +9,8 @@ import {
   Button,
 } from "react-bootstrap";
 
+import logo from "../../images/logo.png";
+
 function Header(props) {
   return (
     <header>
@@ -18,31 +20,35 @@ function Header(props) {
         bg="dark"
         variant="dark"
         sticky="top"
+        className="pt-20 pb-20 pl-10 pr-10"
       >
         <Container fluid>
-          <Navbar.Brand href="/">NotFlix</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img
+              alt="NotFlix Logo"
+              src={logo}
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="m-auto my-2 my-lg-0">
-              <Nav.Link href="/movies">Movies</Nav.Link>
-              <Nav.Link href="/genres">Genres</Nav.Link>
-              <Nav.Link href="/directors">Directors</Nav.Link>
+            <Nav className="m-auto my-2 my-lg-0 text-center">
+              <Nav.Link href="/movies" className="mr-30">
+                Movies
+              </Nav.Link>
+              <Nav.Link href="/genres" className="mr-30">
+                Genres
+              </Nav.Link>
+              <Nav.Link href="/directors" className="mr-30">
+                Directors
+              </Nav.Link>
               <Nav.Link href="/actors">Actors</Nav.Link>
             </Nav>
-            {/* <Form className="d-flex search-form mr-30">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="success">Search</Button>
-            </Form> */}
-            <Nav variant="pills">
+            <Nav variant="pills text-center">
               <Nav.Item>
-                <Button onClick={() => window.open("/login", "_self")}>
-                  Login
-                </Button>
+                <Nav.Link href="/login">
+                  <Button>Login</Button>
+                </Nav.Link>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
