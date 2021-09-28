@@ -1,7 +1,7 @@
 import React from "react";
 
-function Genres(props) {
-  return <div>All genres</div>;
+function Genre(props) {
+  return <div>Details about a genre</div>;
 }
 
-export default Genres;
+export default Genre;

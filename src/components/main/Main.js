@@ -1,7 +1,8 @@
 import React from "react";
+import Router from "../router/Router";
 
 function Main(props) {
-  return <div>this is the main content</div>;
+  return <Router />;
 }
 
 export default Main;

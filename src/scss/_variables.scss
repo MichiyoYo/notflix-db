@@ -1,0 +1,23 @@
+//Color Scheme
+
+$bg-color: #1b1a32;
+
+//elements
+$purple: #610cea;
+$light-purple: #9b42f4;
+$pink: #ec00af;
+$magenta: #ff0072;
+
+//text
+$title-color: #fff;
+$text-color: #7b7b95;
+
+$body-font: newbery-sans-pro, sans-serif;
+$heading-font: rift, sans-serif;
+
+$breakpoints: (
+  "x-small": 500px,
+  "small": 768px,
+  "medium": 992px,
+  "large": 1200px,
+) !default;
