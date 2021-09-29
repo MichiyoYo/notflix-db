@@ -8,7 +8,11 @@ function Main(props) {
       <Container fluid className="main-container">
         <Row className="justify-content-center">
           <Col lg={8} md={10} sm={12}>
-            <Router />
+            <Router
+              user={props.user}
+              movies={props.movies}
+              onLogin={props.onLogin}
+            />
           </Col>
         </Row>
       </Container>

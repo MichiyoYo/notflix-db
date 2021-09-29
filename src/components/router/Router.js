@@ -18,12 +18,14 @@ import UserEdit from "../views/user/user-edit/UserEdit";
 import Favorites from "../views/user/favorites/Favorites";
 import Watchlist from "../views/user/watchlist/Watchlist";
 
-const Router = () => {
+const Router = (props) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login">
+          <Login user={props.user} onLogin={props.onLogin} />
+        </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/about" component={About} />
         <Route exact path="/movies" component={AllMovies} />

@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Button,
-} from "react-bootstrap";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { UserContext } from "../../App";
 
 import logo from "../../images/logo.png";
 
@@ -39,11 +32,15 @@ function Header(props) {
               <Nav.Link href="/actors">Actors</Nav.Link>
             </Nav>
             <Nav variant="pills text-center">
-              <Nav.Item>
-                <Nav.Link href="/login">
-                  <Button>Login</Button>
-                </Nav.Link>
-              </Nav.Item>
+              {props.user ? (
+                `Hi ${props.user}`
+              ) : (
+                <Nav.Item>
+                  <Nav.Link href="/login">
+                    <Button>Login</Button>
+                  </Nav.Link>
+                </Nav.Item>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
