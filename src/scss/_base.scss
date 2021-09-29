@@ -64,6 +64,8 @@ a {
   &.btn-link {
     background-image: none;
     color: $pink;
+    padding: 0 !important;
+    margin-bottom: 4px;
     &:active,
     &:focus,
     &:visited {
