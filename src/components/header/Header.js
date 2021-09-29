@@ -33,15 +33,9 @@ function Header(props) {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="m-auto my-2 my-lg-0 text-center">
-              <Nav.Link href="/movies" className="mr-30">
-                Movies
-              </Nav.Link>
-              <Nav.Link href="/genres" className="mr-30">
-                Genres
-              </Nav.Link>
-              <Nav.Link href="/directors" className="mr-30">
-                Directors
-              </Nav.Link>
+              <Nav.Link href="/movies">Movies</Nav.Link>
+              <Nav.Link href="/genres">Genres</Nav.Link>
+              <Nav.Link href="/directors">Directors</Nav.Link>
               <Nav.Link href="/actors">Actors</Nav.Link>
             </Nav>
             <Nav variant="pills text-center">
