@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 function Login(props) {
@@ -19,6 +19,8 @@ function Login(props) {
         const data = res.data;
         console.log(data);
         props.onLogin(data);
+        setIsValid(true);
+        window.open("/", "_self");
       })
       .catch((err) => {
         console.error(`
@@ -34,7 +36,9 @@ function Login(props) {
       <Col lg={6} md={8} sm={12} className="login-wrapper">
         <h2>Login</h2>
         {isValid ? (
-          <Alert variant="danger" show={false}></Alert>
+          <div>
+            <Alert variant="danger" show={false}></Alert>
+          </div>
         ) : (
           <Alert variant="danger" show={true}>
             🚫 Wrong username or password. Try again.

@@ -38,6 +38,7 @@ export class App extends React.Component {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     this.setState({ user: null });
+    window.open("/login", "_self");
   }
 
   getMovies(token) {

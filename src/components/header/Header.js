@@ -33,7 +33,9 @@ function Header(props) {
             </Nav>
             <Nav variant="pills text-center">
               {props.user ? (
-                `Hi ${props.user}`
+                <Nav.Item>
+                  <Button onClick={props.onLogout}>Logout</Button>
+                </Nav.Item>
               ) : (
                 <Nav.Item>
                   <Nav.Link href="/login">
