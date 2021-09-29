@@ -1,18 +1,21 @@
-.navbar {
-  &.bg-dark {
-    background-color: #15142a8c !important;
-  }
-  .navbar-brand {
-    img {
-      max-width: 130px;
+header {
+  flex: 0 0 auto;
+  .navbar {
+    &.bg-dark {
+      background-color: #15142a8c !important;
     }
-  }
-  a.nav-link {
-    color: $link-color;
-    padding: 10px 30px 10px 30px !important;
-    &:hover {
-      color: $light-purple !important;
-      text-shadow: 0 0 15px $light-purple;
+    .navbar-brand {
+      img {
+        max-width: 130px;
+      }
+    }
+    a.nav-link {
+      color: $link-color;
+      padding: 10px 30px 10px 30px !important;
+      &:hover {
+        color: $light-purple !important;
+        text-shadow: 0 0 15px $light-purple;
+      }
     }
   }
 }
