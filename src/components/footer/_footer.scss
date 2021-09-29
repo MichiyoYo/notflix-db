@@ -12,10 +12,18 @@ footer {
       display: flex;
       justify-content: center;
       align-items: center;
+
       p {
         margin: 0;
         font-size: 13px;
         color: #9494b9 !important;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      padding: 20px 10px;
+      .credits,
+      .logo-wrapper {
+        margin-bottom: 10px;
       }
     }
     .logo-wrapper {

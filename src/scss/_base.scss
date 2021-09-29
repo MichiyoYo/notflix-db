@@ -4,7 +4,7 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 body {
@@ -99,4 +99,10 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.row {
+  @media screen and (max-width: 500px) {
+    padding: 10px !important;
+  }
 }

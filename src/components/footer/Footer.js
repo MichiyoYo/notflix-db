@@ -8,7 +8,7 @@ function Footer(props) {
     <footer>
       <Container fluid>
         <Row>
-          <Col md={4} sm={12} className="text-center credits">
+          <Col md={4} sm={12} className="text-center credits ">
             <p className="mb-0">
               Coded and Designed by{" "}
               <a href="https://cristinalester.rocks" target="_blank">
@@ -17,7 +17,11 @@ function Footer(props) {
               <SocialIcons />
             </p>
           </Col>
-          <Col md={4} sm={12} className="text-center logo-wrapper">
+          <Col
+            md={4}
+            sm={12}
+            className="text-center logo-wrapper d-flex flex-column"
+          >
             <img src={logo} alt="NotFlix Logo" />
           </Col>
           <Col md={4} sm={12} className="text-center copyright">
