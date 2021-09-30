@@ -31,19 +31,29 @@ function Header(props) {
               <Nav.Link href="/directors">Directors</Nav.Link>
               <Nav.Link href="/actors">Actors</Nav.Link>
             </Nav>
-            <Nav variant="pills text-center">
-              {props.user ? (
-                <Nav.Item>
+            {props.user ? (
+              <Nav variant="pills text-center logged-in-menu">
+                <Nav.Link href="/user/favorites">
+                  <i className="fas fa-heart mr-10"></i>
+                  Favorites
+                </Nav.Link>
+                <Nav.Link href="/user/watchlist">
+                  <i className="fas fa-bookmark mr-10"></i>
+                  Watchlist
+                </Nav.Link>
+                <Nav.Item className="ml-30">
                   <Button onClick={props.onLogout}>Logout</Button>
                 </Nav.Item>
-              ) : (
+              </Nav>
+            ) : (
+              <Nav variant="pills text-center">
                 <Nav.Item>
                   <Nav.Link href="/login">
                     <Button>Login</Button>
                   </Nav.Link>
                 </Nav.Item>
-              )}
-            </Nav>
+              </Nav>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

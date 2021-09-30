@@ -17,7 +17,6 @@ function Login(props) {
       })
       .then((res) => {
         const data = res.data;
-        console.log(data);
         props.onLogin(data);
         setIsValid(true);
         window.open("/", "_self");

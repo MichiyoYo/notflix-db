@@ -17,5 +17,10 @@ header {
         text-shadow: 0 0 15px $light-purple;
       }
     }
+    .logged-in-menu {
+      a.nav-link {
+        padding: 10px 10px !important;
+      }
+    }
   }
 }
