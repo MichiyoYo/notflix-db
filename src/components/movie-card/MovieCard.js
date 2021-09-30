@@ -3,7 +3,13 @@ import { Card, Button, Col } from "react-bootstrap";
 
 function MovieCard(props) {
   return (
-    <Col md={4} className="justify-content-center d-flex">
+    <Col
+      xl={3}
+      lg={4}
+      md={6}
+      sm={12}
+      className="justify-content-center d-flex mb-30"
+    >
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src="https://i.imgur.com/AXS8VDK.jpg" />
         <Card.Body>

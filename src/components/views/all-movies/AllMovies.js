@@ -8,6 +8,8 @@ function AllMovies(props) {
       <MovieCard />
       <MovieCard />
       <MovieCard />
+      <MovieCard />
+      <MovieCard />
     </Row>
   );
 }

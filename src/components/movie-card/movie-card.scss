@@ -2,6 +2,12 @@
   background-color: #27273f;
   border-radius: 20px;
   box-shadow: 5px 7px 9px #06060942;
+  @media screen and (max-width: 500px) {
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
   .card-img-top {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
