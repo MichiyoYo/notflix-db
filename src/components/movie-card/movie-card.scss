@@ -1,7 +1,7 @@
 .card {
-  background-color: #27273f;
+  background-color: $box-color;
   border-radius: 20px;
-  box-shadow: 5px 7px 9px #06060942;
+  box-shadow: 5px 7px 9px $box-shadow;
   @media screen and (max-width: 500px) {
     margin-bottom: 30px;
     &:last-child {

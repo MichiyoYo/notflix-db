@@ -1,7 +1,9 @@
 import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function MovieCard(props) {
+  const { movieData } = props;
   return (
     <Col
       xl={3}
@@ -11,14 +13,17 @@ function MovieCard(props) {
       className="justify-content-center d-flex mb-30"
     >
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="https://i.imgur.com/AXS8VDK.jpg" />
+        <Card.Img
+          variant="top"
+          src={movieData.ImagePath}
+          alt={`${movieData.Title} Poster `}
+        />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Details</Button>
+          <Card.Title>{props.movieData.Title}</Card.Title>
+          <Card.Text>{movieData.Description.slice(0, 100) + "..."}</Card.Text>
+          <Link to={`/movies/${movieData._id}`}>
+            <Button variant="primary">Details</Button>
+          </Link>
           <div className="interactions d-inline-block">
             <Button variant="link mr-20" title="Add to Watchlist">
               <i class="far fa-bookmark"></i>

@@ -28,14 +28,28 @@ const Router = (props) => {
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/movies" component={AllMovies} />
-        <Route path="/movies/:movieTitle" component={Movie} />
+        <Route exact path="/movies">
+          <AllMovies movies={props.movies} />
+        </Route>
+        <Route
+          path="/movies/:movieId"
+          render={({ match, history }) => {
+            return (
+              <Movie
+                movieData={props.movies.find(
+                  (movie) => movie._id === match.params.movieId
+                )}
+                onBackClick={() => history.goBack()}
+              />
+            );
+          }}
+        ></Route>
         <Route exact path="/genres" component={AllGenres} />
         <Route path="/genres/:genreName" component={Genre} />
         <Route exact path="/directors" component={AllDirectors} />
-        <Route path="/directors/:directorName" component={Director} />
+        <Route path="/directors/:directorId" component={Director} />
         <Route exact path="/actors" component={AllActors} />
-        <Route path="/actors/:actorName" component={Actor} />
+        <Route path="/actors/:actorId" component={Actor} />
         <Route exact path="/user" component={UserProfile} />
         <Route exact path="/user/edit" component={UserEdit} />
         <Route exact path="/user/favorites" component={Favorites} />

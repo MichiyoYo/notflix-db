@@ -5,11 +5,9 @@ import MovieCard from "../../movie-card/MovieCard";
 function AllMovies(props) {
   return (
     <Row>
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
+      {props.movies.map((movie) => (
+        <MovieCard key={movie._id} movieData={movie} />
+      ))}
     </Row>
   );
 }
