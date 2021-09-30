@@ -1,5 +1,7 @@
 import React from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Rating from "../../rating/Rating";
 
 function Movie(props) {
   const { movieData, onBackClick } = props;
@@ -12,7 +14,11 @@ function Movie(props) {
             <Image className="movie-poster" src={movieData.ImagePath} />
           </Col>
           <Col md={6} sm={12} className="movie-info">
-            <h2 className="movie-title">{movieData.Title}</h2>
+            <h2 className="movie-title mb-20">{movieData.Title}</h2>
+            <Link to={`/genres/${movieData.Genre.Name}`}>
+              <Button variant="secondary">{movieData.Genre.Name}</Button>
+            </Link>
+            <Rating value={movieData.Rating} />
             <p className="mt-30 movie-description">{movieData.Description}</p>
           </Col>
         </Row>

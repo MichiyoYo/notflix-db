@@ -92,6 +92,13 @@ a {
       box-shadow: 0px 0px 15px $magenta !important;
     }
   }
+  &.btn-secondary {
+    background-color: $purple;
+    background-image: none;
+    &:hover {
+      box-shadow: 0 0 10px $purple;
+    }
+  }
 }
 
 .app {
