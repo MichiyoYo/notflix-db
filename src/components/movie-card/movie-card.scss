@@ -1,0 +1,19 @@
+.card {
+  background-color: #27273f;
+  border-radius: 20px;
+  box-shadow: 5px 7px 9px #06060942;
+  .card-img-top {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .card-body {
+    padding: 25px;
+    .card-text {
+      font-size: 15px;
+    }
+    .interactions {
+      float: right;
+      margin-top: 5px;
+    }
+  }
+}
