@@ -44,6 +44,7 @@ const Router = (props) => {
             );
           }}
         ></Route>
+
         <Route exact path="/genres" component={AllGenres} />
         <Route path="/genres/:genreName" component={Genre} />
         <Route exact path="/directors" component={AllDirectors} />

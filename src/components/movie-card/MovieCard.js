@@ -26,10 +26,10 @@ function MovieCard(props) {
           </Link>
           <div className="interactions d-inline-block">
             <Button variant="link mr-20" title="Add to Watchlist">
-              <i class="far fa-bookmark"></i>
+              <i className="far fa-bookmark"></i>
             </Button>
             <Button variant="link" title="Add to Favorites">
-              <i class="far fa-heart"></i>
+              <i className="far fa-heart"></i>
             </Button>
           </div>
         </Card.Body>

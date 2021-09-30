@@ -2,5 +2,20 @@
   .fa-star {
     display: inline-block;
     margin-right: 3px;
+    &:nth-child(1) {
+      color: #6e08f6;
+    }
+    &:nth-child(2) {
+      color: #bc00cf;
+    }
+    &:nth-child(3) {
+      color: #e200a9;
+    }
+    &:nth-child(4) {
+      color: #f60087;
+    }
+    &:nth-child(5) {
+      color: #fc036b;
+    }
   }
 }

@@ -13,10 +13,30 @@
     }
   }
   .movie-info {
-    .movie-title {
-      @media screen and (max-width: $small) {
-        text-align: center;
+    @media screen and (max-width: $small) {
+      text-align: center;
+      .movie-description {
+        text-align: left;
       }
+    }
+    .release-date {
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+  .row {
+    position: relative;
+    .back-btn {
+      width: fit-content;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border-radius: 50% !important;
+      background-image: none;
+      background-color: transparent;
+      border: 2px solid $pink !important;
+      color: $pink;
     }
   }
 }
