@@ -25,12 +25,20 @@
     .director {
       span {
         font-weight: 600;
+        @media screen and (max-width: $small) {
+          display: block;
+        }
       }
     }
     .cast {
       float: left;
       font-weight: 600;
+      @media screen and (max-width: $small) {
+        float: none;
+        margin-bottom: 0;
+      }
     }
+
     .cast-list {
       list-style-type: none;
       display: inline-block;
@@ -43,6 +51,16 @@
         }
         &:last-child:after {
           content: none;
+        }
+      }
+      @media screen and (max-width: $small) {
+        li {
+          text-align: center;
+          display: block;
+          float: none;
+          &:after {
+            content: none;
+          }
         }
       }
     }
@@ -64,5 +82,14 @@
         right: -2px;
       }
     }
+  }
+}
+
+.add-to-watchlist-btn,
+.add-to-favs-btn {
+  @media screen and (max-width: $small) {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
   }
 }

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Row, Col, Image, Button, Alert, Toast } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Rating from "../../rating/Rating";
 import axios from "axios";
 import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
 
 function Movie(props) {
   const { movieData, onBackClick } = props;
-  const date = new Date(movieData.ReleaseDate);
 
   const [addedToFavs, setAddedToFavs] = useState(false);
   const [addedToWatchlist, setAddedToWatchlist] = useState(false);
@@ -27,6 +26,8 @@ function Movie(props) {
       </li>
     )
   );
+
+  const date = new Date(movieData.ReleaseDate);
 
   return (
     <Row className="movie-details">
