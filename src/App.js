@@ -13,6 +13,9 @@ export class App extends React.Component {
   state = {
     user: null,
     movies: [],
+    genres: [],
+    directors: [],
+    actors: [],
   };
 
   componentDidMount() {
@@ -22,6 +25,9 @@ export class App extends React.Component {
         user: localStorage.getItem("user"),
       });
       this.getMovies(accessToken);
+      this.getDirectors(accessToken);
+      this.getGenres(accessToken);
+      this.getActors(accessToken);
     }
   }
 
@@ -31,7 +37,6 @@ export class App extends React.Component {
     });
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
-    this.getMovies(authData.token);
   }
 
   onLogout() {
@@ -49,6 +54,53 @@ export class App extends React.Component {
       .then((res) => {
         this.setState({
           movies: res.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  getDirectors(token) {
+    axios
+      .get("https://notflixapi.herokuapp.com/catalog/directors", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        this.setState({
+          directors: res.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  getGenres(token) {
+    axios
+      .get("https://notflixapi.herokuapp.com/catalog/genres", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log("Res data: " + res.data);
+        this.setState({
+          genres: res.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  getActors(token) {
+    axios
+      .get("https://notflixapi.herokuapp.com/catalog/actors", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log("Res data: " + res.data);
+        this.setState({
+          actors: res.data,
         });
       })
       .catch((err) => {

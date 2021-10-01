@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
-import { UserContext } from "../../App";
 
 import logo from "../../images/logo.png";
 
