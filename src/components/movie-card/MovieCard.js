@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { addToFavorites, addToWatchlist } from "../../helpers/movieOps";
 
 function MovieCard(props) {
   const { movieData } = props;
+
+  const userSession = {
+    user: localStorage.getItem("user"),
+    token: localStorage.getItem("token"),
+  };
+
   return (
     <Col
       xl={3}
@@ -26,10 +33,44 @@ function MovieCard(props) {
               <Button variant="primary">Details</Button>
             </Link>
             <div className="interactions d-inline-block">
-              <Button variant="link mr-20" title="Add to Watchlist">
+              <Button
+                variant="link mr-20"
+                title="Add to Watchlist"
+                onClick={(e) => {
+                  addToWatchlist(
+                    userSession.user,
+                    userSession.token,
+                    movieData._id
+                  )
+                    .then(() => {
+                      e.target.classList.remove("far");
+                      e.target.classList.add("fas");
+                    })
+                    .catch((err) => {
+                      console.error(err);
+                    });
+                }}
+              >
                 <i className="far fa-bookmark"></i>
               </Button>
-              <Button variant="link" title="Add to Favorites">
+              <Button
+                variant="link"
+                title="Add to Favorites"
+                onClick={(e) => {
+                  addToFavorites(
+                    userSession.user,
+                    userSession.token,
+                    movieData._id
+                  )
+                    .then(() => {
+                      e.target.classList.remove("far");
+                      e.target.classList.add("fas");
+                    })
+                    .catch((err) => {
+                      console.error(err);
+                    });
+                }}
+              >
                 <i className="far fa-heart"></i>
               </Button>
             </div>
