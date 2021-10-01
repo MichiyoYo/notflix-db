@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Row, Col, Image, Button } from "react-bootstrap";
+import { Row, Col, Image, Button, Alert, Toast } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../../rating/Rating";
 import axios from "axios";
+import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
 
 function Movie(props) {
   const { movieData, onBackClick } = props;
   const date = new Date(movieData.ReleaseDate);
+
+  const [addedToFavs, setAddedToFavs] = useState(false);
+  const [addedToWatchlist, setAddedToWatchlist] = useState(false);
+  const [showFavToast, setShowFavToast] = useState(false);
+  const [showWatchlistToast, setShowWatchlistToast] = useState(false);
 
   const userSession = {
     user: localStorage.getItem("user"),
@@ -21,23 +27,6 @@ function Movie(props) {
       </li>
     )
   );
-
-  const addToFavs = (user, token, movieId) => {
-    axios
-      .post(
-        `https://notflixapi.herokuapp.com/users/${user}/favorites/${movieId}`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
 
   return (
     <Row className="movie-details">
@@ -78,18 +67,79 @@ function Movie(props) {
 
             <div className="interactions mt-50">
               <Button
+                className="add-to-watchlist-btn"
                 variant="primary mr-20"
                 title="Add to Watchlist"
-                onClick={() =>
-                  addToFavs(userSession.user, userSession.token, movieData._id)
-                }
+                onClick={() => {
+                  addToWatchlist(
+                    userSession.user,
+                    userSession.token,
+                    movieData._id
+                  )
+                    .then(() => {
+                      setAddedToWatchlist(true);
+                      setShowWatchlistToast(true);
+                    })
+                    .catch((err) => {
+                      setAddedToWatchlist(false);
+                    });
+                }}
               >
                 <i className="far fa-bookmark"></i> Add to Watchlist
               </Button>
-              <Button variant="primary" title="Add to Favorites">
+              <Button
+                className="add-to-favs-btn"
+                variant="primary"
+                title="Add to Favorites"
+                onClick={() => {
+                  addToFavorites(
+                    userSession.user,
+                    userSession.token,
+                    movieData._id
+                  )
+                    .then(() => {
+                      setAddedToFavs(true);
+                      setShowFavToast(true);
+                    })
+                    .catch((err) => {
+                      setAddedToFavs(false);
+                    });
+                }}
+              >
                 <i className="far fa-heart"></i> Add to Favorites
               </Button>
             </div>
+            {addedToFavs ? (
+              <Toast
+                onClose={() => setShowFavToast(false)}
+                show={showFavToast}
+                delay={2000}
+                autohide
+                className="mt-20"
+              >
+                <Toast.Header>
+                  <strong className="me-auto">Added to your Favorites!</strong>
+                </Toast.Header>
+              </Toast>
+            ) : (
+              ""
+            )}
+
+            {addedToWatchlist ? (
+              <Toast
+                onClose={() => setShowWatchlistToast(false)}
+                show={showWatchlistToast}
+                delay={2000}
+                autohide
+                className="mt-20"
+              >
+                <Toast.Header>
+                  <strong className="me-auto">Added to your Watchlist!</strong>
+                </Toast.Header>
+              </Toast>
+            ) : (
+              ""
+            )}
           </Col>
         </Row>
       </Col>

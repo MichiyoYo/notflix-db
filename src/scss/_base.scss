@@ -101,6 +101,15 @@ a {
   }
 }
 
+.alert {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+  .login-wrapper & {
+    width: 100%;
+  }
+}
+
 .app {
   min-height: 100vh;
   display: flex;
