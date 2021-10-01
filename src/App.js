@@ -82,7 +82,6 @@ export class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log("Res data: " + res.data);
         this.setState({
           genres: res.data,
         });
@@ -98,7 +97,6 @@ export class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log("Res data: " + res.data);
         this.setState({
           actors: res.data,
         });

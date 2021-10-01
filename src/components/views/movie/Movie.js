@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../../rating/Rating";
+import axios from "axios";
 
 function Movie(props) {
   const { movieData, onBackClick } = props;
   const date = new Date(movieData.ReleaseDate);
+
+  const userSession = {
+    user: localStorage.getItem("user"),
+    token: localStorage.getItem("token"),
+  };
 
   const cast = [];
   movieData.Cast.forEach((actor) =>
@@ -16,12 +22,29 @@ function Movie(props) {
     )
   );
 
+  const addToFavs = (user, token, movieId) => {
+    axios
+      .post(
+        `https://notflixapi.herokuapp.com/users/${user}/favorites/${movieId}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <Row className="movie-details">
       <Col sm={12} className="movie-header">
         <Row>
           <Button onClick={onBackClick} className="back-btn">
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </Button>
           <Col md={6} sm={12} className="d-flex justify-content-center">
             <Image className="movie-poster" src={movieData.ImagePath} />
@@ -53,12 +76,18 @@ function Movie(props) {
             <ul className="cast-list">{cast}</ul>
             <p className="movie-description">{movieData.Description}</p>
 
-            <div className="interactions">
-              <Button variant="link mr-20" title="Add to Watchlist">
-                <i className="far fa-bookmark"></i>
+            <div className="interactions mt-50">
+              <Button
+                variant="primary mr-20"
+                title="Add to Watchlist"
+                onClick={() =>
+                  addToFavs(userSession.user, userSession.token, movieData._id)
+                }
+              >
+                <i className="far fa-bookmark"></i> Add to Watchlist
               </Button>
-              <Button variant="link" title="Add to Favorites">
-                <i className="far fa-heart"></i>
+              <Button variant="primary" title="Add to Favorites">
+                <i className="far fa-heart"></i> Add to Favorites
               </Button>
             </div>
           </Col>
