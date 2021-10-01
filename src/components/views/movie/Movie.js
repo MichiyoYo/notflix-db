@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../../rating/Rating";
@@ -6,6 +6,15 @@ import Rating from "../../rating/Rating";
 function Movie(props) {
   const { movieData, onBackClick } = props;
   const date = new Date(movieData.ReleaseDate);
+
+  const cast = [];
+  movieData.Cast.forEach((actor) =>
+    cast.push(
+      <li key={actor._id}>
+        <Link to={`/actors/${actor._id}`}>{actor.Name}</Link>
+      </li>
+    )
+  );
 
   return (
     <Row className="movie-details">
@@ -34,7 +43,24 @@ function Movie(props) {
                 date.getFullYear()}
             </p>
 
-            <p className="mt-30 movie-description">{movieData.Description}</p>
+            <p className="director">
+              <span>Director: </span>
+              <Link to={`/directors/${movieData.Director.Name}`}>
+                {movieData.Director.Name}
+              </Link>
+            </p>
+            <p className="cast">Cast: </p>
+            <ul className="cast-list">{cast}</ul>
+            <p className="movie-description">{movieData.Description}</p>
+
+            <div className="interactions">
+              <Button variant="link mr-20" title="Add to Watchlist">
+                <i className="far fa-bookmark"></i>
+              </Button>
+              <Button variant="link" title="Add to Favorites">
+                <i className="far fa-heart"></i>
+              </Button>
+            </div>
           </Col>
         </Row>
       </Col>
