@@ -45,13 +45,17 @@ const Router = (props) => {
           }}
         ></Route>
 
-        <Route exact path="/genres" component={AllGenres} />
+        <Route exact path="/genres">
+          <AllGenres genres={props.genres} />
+        </Route>
         <Route path="/genres/:genreName" component={Genre} />
         <Route exact path="/directors">
           <AllDirectors directors={props.directors} />
         </Route>
         <Route path="/directors/:directorName" component={Director} />
-        <Route exact path="/actors" component={AllActors} />
+        <Route exact path="/actors">
+          <AllActors actors={props.actors} />
+        </Route>
         <Route path="/actors/:actorId" component={Actor} />
         <Route exact path="/user" component={UserProfile} />
         <Route exact path="/user/edit" component={UserEdit} />
