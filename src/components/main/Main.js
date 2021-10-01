@@ -11,6 +11,9 @@ function Main(props) {
             <Router
               user={props.user}
               movies={props.movies}
+              directors={props.directors}
+              genres={props.genres}
+              actors={props.actors}
               onLogin={props.onLogin}
             />
           </Col>

@@ -116,6 +116,9 @@ export class App extends React.Component {
         />
         <Main
           movies={this.state.movies}
+          directors={this.state.directors}
+          genres={this.state.genres}
+          actors={this.state.actors}
           user={this.state.user}
           onLogin={(user) => this.onLogin(user)}
         />
