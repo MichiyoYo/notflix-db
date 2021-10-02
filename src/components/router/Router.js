@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "../login/Login";
 import Register from "../register/Register";
 import AllMovies from "../views/all-movies/AllMovies";
@@ -19,6 +19,8 @@ import Favorites from "../views/user/favorites/Favorites";
 import Watchlist from "../views/user/watchlist/Watchlist";
 
 const Router = (props) => {
+  const loggedIn = props.user !== null;
+
   return (
     <BrowserRouter>
       <Switch>
@@ -26,7 +28,9 @@ const Router = (props) => {
         <Route exact path="/login">
           <Login user={props.user} onLogin={props.onLogin} />
         </Route>
-        <Route exact path="/register" component={Register} />
+        <Route exact path="/register">
+          {loggedIn ? <UserProfile /> : <Register />}
+        </Route>
         <Route exact path="/about" component={About} />
         <Route exact path="/movies">
           <AllMovies movies={props.movies} />
@@ -39,7 +43,6 @@ const Router = (props) => {
                 movieData={props.movies.find(
                   (movie) => movie._id === match.params.movieId
                 )}
-                onBackClick={() => history.goBack()}
               />
             );
           }}
@@ -97,7 +100,9 @@ const Router = (props) => {
             );
           }}
         />
-        <Route exact path="/user" component={UserProfile} />
+        <Route exact path="/user">
+          <UserProfile user={props.user} />
+        </Route>
         <Route exact path="/user/edit" component={UserEdit} />
         <Route exact path="/user/favorites" component={Favorites} />
         <Route exact path="/user/watchlist" component={Watchlist} />

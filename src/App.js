@@ -11,7 +11,7 @@ export const movieContext = React.createContext();
 
 export class App extends React.Component {
   state = {
-    user: null,
+    userData: {},
     movies: [],
     genres: [],
     directors: [],
@@ -21,20 +21,19 @@ export class App extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-      });
       this.getMovies(accessToken);
       this.getDirectors(accessToken);
       this.getGenres(accessToken);
       this.getActors(accessToken);
+      this.getUserInfo(localStorage.getItem("user"), accessToken);
     }
   }
 
   onLogin(authData) {
-    this.setState({
-      user: authData.user.Username,
-    });
+    // console.log(authData);
+    // this.setState({
+    //   user: authData.user.Username,
+    // });
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
   }
@@ -42,8 +41,24 @@ export class App extends React.Component {
   onLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({ user: null });
+    this.setState({ userData: {} });
     window.open("/login", "_self");
+  }
+
+  getUserInfo(username, token) {
+    console.log(username);
+    axios
+      .get(`https://notflixapi.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        this.setState({
+          userData: res.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   getMovies(token) {
@@ -110,7 +125,7 @@ export class App extends React.Component {
     return (
       <div className="app">
         <Header
-          user={this.state.user}
+          user={this.state.userData.Username}
           onLogin={(user) => this.onLogin(user)}
           onLogout={() => this.onLogout()}
         />
@@ -119,7 +134,7 @@ export class App extends React.Component {
           directors={this.state.directors}
           genres={this.state.genres}
           actors={this.state.actors}
-          user={this.state.user}
+          user={this.state.userData.Username}
           onLogin={(user) => this.onLogin(user)}
         />
         <Footer />

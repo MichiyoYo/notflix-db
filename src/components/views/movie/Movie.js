@@ -6,7 +6,8 @@ import axios from "axios";
 import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
 
 function Movie(props) {
-  const { movieData, onBackClick } = props;
+  const { movieData } = props;
+  const historyData = useHistory();
 
   const [addedToFavs, setAddedToFavs] = useState(false);
   const [addedToWatchlist, setAddedToWatchlist] = useState(false);
@@ -33,7 +34,7 @@ function Movie(props) {
     <Row className="movie-details">
       <Col sm={12} className="movie-header">
         <Row>
-          <Button onClick={onBackClick} className="back-btn">
+          <Button onClick={() => historyData.goBack()} className="back-btn">
             <i className="fas fa-times"></i>
           </Button>
           <Col md={6} sm={12} className="d-flex justify-content-center">

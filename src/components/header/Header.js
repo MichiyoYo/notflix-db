@@ -40,7 +40,7 @@ function Header(props) {
                 </Nav.Link>
                 <Nav.Link href="/user">
                   <i
-                    class="fas fa-user-astronaut"
+                    className="fas fa-user-astronaut"
                     title={`${props.user}'s Profile`}
                   ></i>
                 </Nav.Link>
