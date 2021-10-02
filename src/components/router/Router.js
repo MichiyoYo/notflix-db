@@ -74,8 +74,9 @@ const Router = (props) => {
                 directorData={props.directors.find(
                   (director) => director.Name === match.params.directorName
                 )}
-                onBackClick={() => history.goBack()}
-                movies={props.movies}
+                movies={props.movies.filter(
+                  (movie) => movie.Director.Name === match.params.directorName
+                )}
               />
             );
           }}
