@@ -48,7 +48,21 @@ const Router = (props) => {
         <Route exact path="/genres">
           <AllGenres genres={props.genres} />
         </Route>
-        <Route path="/genres/:genreName" component={Genre} />
+        <Route
+          path="/genres/:genreName"
+          render={({ match, history }) => {
+            return (
+              <Genre
+                genreData={props.genres.find(
+                  (genre) => genre.Name === match.params.genreName
+                )}
+                movies={props.movies.filter(
+                  (movie) => movie.Genre.Name === match.params.genreName
+                )}
+              />
+            );
+          }}
+        />
         <Route exact path="/directors">
           <AllDirectors directors={props.directors} />
         </Route>

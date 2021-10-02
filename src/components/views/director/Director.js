@@ -22,7 +22,7 @@ function Director(props) {
   });
 
   return (
-    <Row className="director-details justify-content-center">
+    <Row className="director-details detail-view justify-content-center">
       <Col sm={12}>
         <Row>
           <Button onClick={onBackClick} className="back-btn">

@@ -20,7 +20,7 @@ function Actor(props) {
   });
 
   return (
-    <Row className="actor-details justify-content-center">
+    <Row className="actor-details detail-view justify-content-center">
       <Col sm={12}>
         <Row>
           <Button onClick={onBackClick} className="back-btn">
