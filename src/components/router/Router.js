@@ -52,7 +52,20 @@ const Router = (props) => {
         <Route exact path="/directors">
           <AllDirectors directors={props.directors} />
         </Route>
-        <Route path="/directors/:directorName" component={Director} />
+        <Route
+          path="/directors/:directorName"
+          render={({ match, history }) => {
+            return (
+              <Director
+                directorData={props.directors.find(
+                  (director) => director.Name === match.params.directorName
+                )}
+                onBackClick={() => history.goBack()}
+                movies={props.movies}
+              />
+            );
+          }}
+        />
         <Route exact path="/actors">
           <AllActors actors={props.actors} />
         </Route>
