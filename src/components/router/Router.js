@@ -17,19 +17,24 @@ import UserProfile from "../views/user/user-profile/UserProfile";
 import UserEdit from "../views/user/user-edit/UserEdit";
 import Favorites from "../views/user/favorites/Favorites";
 import Watchlist from "../views/user/watchlist/Watchlist";
+import AccessDenied from "../access-denied/AccessDenied";
 
 const Router = (props) => {
-  const loggedIn = props.user !== null;
-
+  const loggedIn =
+    Object.keys(props.userData).length !== 0 && props.userData !== null;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login">
-          <Login user={props.user} onLogin={props.onLogin} />
+          {loggedIn ? (
+            <Redirect to="/user" />
+          ) : (
+            <Login user={props.userData.Username} onLogin={props.onLogin} />
+          )}
         </Route>
         <Route exact path="/register">
-          {loggedIn ? <UserProfile /> : <Register />}
+          {loggedIn ? <Redirect to="/user" /> : <Register />}
         </Route>
         <Route exact path="/about" component={About} />
         <Route exact path="/movies">
@@ -101,7 +106,11 @@ const Router = (props) => {
           }}
         />
         <Route exact path="/user">
-          <UserProfile user={props.user} />
+          {loggedIn ? (
+            <UserProfile userData={props.userData} movies={props.movies} />
+          ) : (
+            <AccessDenied />
+          )}
         </Route>
         <Route exact path="/user/edit" component={UserEdit} />
         <Route exact path="/user/favorites" component={Favorites} />

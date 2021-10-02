@@ -5,6 +5,7 @@ import Main from "./components/main/Main";
 import axios from "axios";
 
 import "./scss/styles.scss";
+import { Link } from "react-router-dom";
 
 export const UserContext = React.createContext();
 export const movieContext = React.createContext();
@@ -129,14 +130,7 @@ export class App extends React.Component {
           onLogin={(user) => this.onLogin(user)}
           onLogout={() => this.onLogout()}
         />
-        <Main
-          movies={this.state.movies}
-          directors={this.state.directors}
-          genres={this.state.genres}
-          actors={this.state.actors}
-          user={this.state.userData.Username}
-          onLogin={(user) => this.onLogin(user)}
-        />
+        <Main {...this.state} onLogin={(user) => this.onLogin(user)} />
         <Footer />
       </div>
     );
