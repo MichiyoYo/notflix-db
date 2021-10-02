@@ -93,7 +93,6 @@ const Router = (props) => {
                   (actor) => actor.Name === match.params.actorName
                 )}
                 movies={props.movies}
-                onBackClick={() => history.goBack()}
               />
             );
           }}

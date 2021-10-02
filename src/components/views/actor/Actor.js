@@ -1,9 +1,11 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import { useHistory } from "react-router";
 import MovieCard from "../../movie-card/MovieCard";
 
 function Actor(props) {
-  const { actorData, onBackClick, movies } = props;
+  const { actorData, movies } = props;
+  const historyData = useHistory();
 
   const filmography = [];
   actorData.Filmography.map((movie) => filmography.push(movie._id));
@@ -23,7 +25,7 @@ function Actor(props) {
     <Row className="actor-details detail-view justify-content-center">
       <Col sm={12}>
         <Row>
-          <Button onClick={onBackClick} className="back-btn">
+          <Button onClick={() => historyData.goBack()} className="back-btn">
             <i className="fas fa-times"></i>
           </Button>
           <Col sm={12}>
