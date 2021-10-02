@@ -37,7 +37,7 @@ function Register(props) {
   return (
     <Row className="justify-content-center">
       <Col lg={6} md={8} sm={12} className="login-wrapper">
-        <h2>Register</h2>
+        <h2 className="mb-30">Register</h2>
         {isValid ? (
           <div>
             <Alert variant="danger" show={false}></Alert>
