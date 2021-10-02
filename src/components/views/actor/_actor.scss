@@ -1,0 +1,34 @@
+.actor-details {
+  @include general-container;
+  padding: 20px;
+  .row {
+    position: relative;
+    padding: 30px 20px !important;
+    .back-btn {
+      width: fit-content;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border-radius: 50% !important;
+      background-image: none;
+      background-color: transparent;
+      border: 2px solid $pink !important;
+      color: $pink;
+      @media screen and (max-width: $small) {
+        top: 7px;
+        right: 7px;
+      }
+    }
+    .birthdate,
+    .deathdate {
+      span {
+        font-weight: 600;
+      }
+      margin-bottom: 0;
+    }
+    .filmography {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+}

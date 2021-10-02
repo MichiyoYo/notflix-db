@@ -69,7 +69,20 @@ const Router = (props) => {
         <Route exact path="/actors">
           <AllActors actors={props.actors} />
         </Route>
-        <Route path="/actors/:actorId" component={Actor} />
+        <Route
+          path="/actors/:actorName"
+          render={({ match, history }) => {
+            return (
+              <Actor
+                actorData={props.actors.find(
+                  (actor) => actor.Name === match.params.actorName
+                )}
+                movies={props.movies}
+                onBackClick={() => history.goBack()}
+              />
+            );
+          }}
+        />
         <Route exact path="/user" component={UserProfile} />
         <Route exact path="/user/edit" component={UserEdit} />
         <Route exact path="/user/favorites" component={Favorites} />

@@ -10,6 +10,7 @@ function Director(props) {
 
   const filmography = [];
   directorData.Filmography.map((movie) => filmography.push(movie._id));
+
   const filmographyData = [];
   filmography.forEach((movieId) => {
     filmographyData.push(movies.find((movie) => movie._id === movieId));
@@ -20,7 +21,6 @@ function Director(props) {
     cards.push(<MovieCard key={movie._id} movieData={movie} />);
   });
 
-  console.log(cards);
   return (
     <Row className="director-details justify-content-center">
       <Col sm={12}>
@@ -28,14 +28,12 @@ function Director(props) {
           <Button onClick={onBackClick} className="back-btn">
             <i className="fas fa-times"></i>
           </Button>
-          <Col md={12} sm={12}>
+          <Col sm={12}>
             <h2 className="mb-50">{directorData.Name}</h2>
           </Col>
-          <Col md={6} sm={12}>
+          <Col sm={12}>
             <h3>Biography</h3>
             <p className="bio">{directorData.Bio}</p>
-          </Col>
-          <Col md={6} sm={12}>
             <h3>Fatcs</h3>
             <p className="birthdate">
               <span>Birth Date: </span>
@@ -60,8 +58,9 @@ function Director(props) {
               ""
             )}
           </Col>
+
           <Col md={12} className="mt-50">
-            <h3 className="mb-30">Filmography</h3>
+            <h3 className="mb-10">Filmography</h3>
             <Row className="filmography p-0">{cards}</Row>
           </Col>
         </Row>

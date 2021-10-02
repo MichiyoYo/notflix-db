@@ -22,7 +22,7 @@ function Movie(props) {
   movieData.Cast.forEach((actor) =>
     cast.push(
       <li key={actor._id}>
-        <Link to={`/actors/${actor._id}`}>{actor.Name}</Link>
+        <Link to={`/actors/${actor.Name}`}>{actor.Name}</Link>
       </li>
     )
   );
