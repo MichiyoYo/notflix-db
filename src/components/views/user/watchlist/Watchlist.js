@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 import { Row, Col, Button } from "react-bootstrap";
 import MovieCard from "../../../movie-card/MovieCard";
@@ -8,8 +8,6 @@ function Watchlist(props) {
   const { userData, movies } = props;
   const historyData = useHistory();
 
-  const [userWatchlist, setUserWatchlist] = useState(userData.WatchList);
-
   const userSession = {
     user: localStorage.getItem("user"),
     token: localStorage.getItem("token"),
@@ -17,16 +15,20 @@ function Watchlist(props) {
 
   const hanldeRemoveMovie = (e) => {
     e.preventDefault();
-    const movieToRemoveId =
-      e.target.parentElement.parentElement.getAttribute("index");
+
+    const movieToRemove = e.target.parentElement.parentElement;
+    const movieToRemoveId = movieToRemove.getAttribute("index");
+
     removeFromWatchlist(userSession.user, userSession.token, movieToRemoveId)
       .then(() => {
-        setUserWatchlist(
-          userWatchlist.filter((movie) => movie._id != movieToRemoveId)
+        userData.WatchList = userData.WatchList.filter(
+          (movie) => movie._id != movieToRemoveId
         );
-        userData.WatchList = userWatchlist;
+        movieToRemove.classList.add("d-none");
       })
       .catch((err) => console.error(err));
+    console.log(movieToRemoveId);
+    console.log(userData.WatchList);
   };
 
   const watchlist = [];
@@ -67,7 +69,16 @@ function Watchlist(props) {
           </Button>
           <Col sm={12}>
             <h1 className="text-center mb-50">Watchlist</h1>
-            <Row className="watchlist-movies">{cards}</Row>
+            <Row className="watchlist-movies">
+              {" "}
+              {cards.length > 0 ? (
+                cards
+              ) : (
+                <p className="text-center">
+                  You have no movies in your watchlist 🤷
+                </p>
+              )}
+            </Row>
           </Col>
         </Row>
       </Col>

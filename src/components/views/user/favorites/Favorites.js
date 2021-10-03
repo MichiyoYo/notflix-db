@@ -28,8 +28,6 @@ function Favorites(props) {
         movieToRemove.classList.add("d-none");
       })
       .catch((err) => console.error(err));
-    console.log(movieToRemoveId);
-    console.log(userData.FavoriteMovies);
   };
 
   const favs = [];
