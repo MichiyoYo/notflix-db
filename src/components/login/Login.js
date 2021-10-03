@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +7,8 @@ function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState("true");
+
+  const form = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,10 +32,14 @@ function Login(props) {
       });
   };
 
+  const validate = () => {
+    form.current.reportValidity();
+  };
+
   return (
     <Row className="justify-content-center">
       <Col lg={6} md={8} sm={12} className="login-wrapper">
-        <h2>Login</h2>
+        <h2 className="mb-30">Login</h2>
         {isValid ? (
           <div>
             <Alert variant="danger" show={false}></Alert>
@@ -43,7 +49,7 @@ function Login(props) {
             🚫 Wrong username or password. Try again.
           </Alert>
         )}
-        <Form>
+        <Form ref={form} onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -66,10 +72,13 @@ function Login(props) {
               }}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Remember me" />
-          </Form.Group>
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
+
+          <Button
+            className="mt-20"
+            variant="primary"
+            type="submit"
+            onClick={validate}
+          >
             Submit
           </Button>
         </Form>

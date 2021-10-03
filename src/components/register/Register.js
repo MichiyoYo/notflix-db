@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,8 @@ function Register(props) {
   const [name, setName] = useState("");
   const [birthDate, setBirthdate] = useState("");
   const [isValid, setIsValid] = useState(true);
+
+  const form = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();

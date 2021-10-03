@@ -9,7 +9,7 @@ function Home(props) {
       <Col lg={6} md={8} sm={12} className="text-center home-content">
         <h1 className="mb-30">
           Welcome to
-          <img className="pt-50" src={logo} alt="Large Notflix logo" fluid />
+          <img className="pt-50" src={logo} alt="Large Notflix logo" />
         </h1>
         <h2 className="subtitle mb-30">
           Not our mother's movie DB<span className="block mt-20">🍿 🎥 ⭐</span>
