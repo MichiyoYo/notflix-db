@@ -109,3 +109,16 @@
     }
   }
 }
+
+.card-wrap {
+  position: relative;
+
+  .remove-btn {
+    position: absolute;
+    top: 16px;
+    background: $pink;
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 9px !important;
+  }
+}

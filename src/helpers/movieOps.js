@@ -40,7 +40,6 @@ export function removeFromFavorites(user, token, movieId) {
   let promise = axios
     .delete(
       `https://notflixapi.herokuapp.com/users/${user}/favorites/${movieId}`,
-      {},
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -58,7 +57,6 @@ export function removeFromWatchlist(user, token, movieId) {
   let promise = axios
     .delete(
       `https://notflixapi.herokuapp.com/users/${user}/watchlist/${movieId}`,
-      {},
       {
         headers: { Authorization: `Bearer ${token}` },
       }

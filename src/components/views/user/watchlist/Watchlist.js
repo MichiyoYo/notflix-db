@@ -19,7 +19,10 @@ function Watchlist(props) {
   const cards = [];
   filteredMovies.map((movie) => {
     cards.push(
-      <Col className="d-flex align-items-center flex-column card-wrap">
+      <Col
+        className="d-flex align-items-center flex-column card-wrap"
+        key={movie._id}
+      >
         <MovieCard key={movie._id} movieData={movie} />
         <Button
           variant="primary"
