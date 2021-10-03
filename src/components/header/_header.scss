@@ -16,19 +16,34 @@ header {
         color: $light-purple !important;
         text-shadow: 0 0 15px $light-purple;
       }
+      .fa-user-astronaut {
+        border: 2px solid #85838f;
+        padding: 10px 12px;
+        border-radius: 50%;
+        margin-top: -5px;
+        &:hover {
+          border: 2px solid $purple;
+        }
+      }
     }
     .logged-in-menu {
       a.nav-link {
         padding: 10px 10px !important;
         font-size: 20px;
         padding-bottom: 0 !important;
+        .label {
+          display: none;
+          @media screen and (max-width: $small) {
+            display: inline-block;
+          }
+        }
       }
       .logout-btn {
         margin-left: 30px;
         margin-top: 8px;
         @media screen and (max-width: $small) {
           margin-left: 0;
-          margin-top: 1px;
+          margin-top: 20px;
         }
       }
     }

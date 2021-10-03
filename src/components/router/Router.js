@@ -20,8 +20,7 @@ import Watchlist from "../views/user/watchlist/Watchlist";
 import AccessDenied from "../access-denied/AccessDenied";
 
 const Router = (props) => {
-  const loggedIn =
-    Object.keys(props.userData).length !== 0 && props.userData !== null;
+  const loggedIn = localStorage.getItem("user") !== null;
   return (
     <BrowserRouter>
       <Switch>
@@ -38,11 +37,11 @@ const Router = (props) => {
         </Route>
         <Route exact path="/about" component={About} />
         <Route exact path="/movies">
-          <AllMovies movies={props.movies} />
+          {loggedIn ? <AllMovies movies={props.movies} /> : <AccessDenied />}
         </Route>
         <Route
           path="/movies/:movieId"
-          render={({ match, history }) => {
+          render={({ match }) => {
             return (
               <Movie
                 movieData={props.movies.find(
@@ -58,7 +57,7 @@ const Router = (props) => {
         </Route>
         <Route
           path="/genres/:genreName"
-          render={({ match, history }) => {
+          render={({ match }) => {
             return (
               <Genre
                 genreData={props.genres.find(
@@ -76,7 +75,7 @@ const Router = (props) => {
         </Route>
         <Route
           path="/directors/:directorName"
-          render={({ match, history }) => {
+          render={({ match }) => {
             return (
               <Director
                 directorData={props.directors.find(
@@ -94,7 +93,7 @@ const Router = (props) => {
         </Route>
         <Route
           path="/actors/:actorName"
-          render={({ match, history }) => {
+          render={({ match }) => {
             return (
               <Actor
                 actorData={props.actors.find(
@@ -115,8 +114,20 @@ const Router = (props) => {
         <Route exact path="/user/edit">
           {loggedIn ? <UserEdit userData={props.userData} /> : <AccessDenied />}
         </Route>
-        <Route exact path="/user/favorites" component={Favorites} />
-        <Route exact path="/user/watchlist" component={Watchlist} />
+        <Route exact path="/user/favorites">
+          {loggedIn ? (
+            <Favorites userData={props.userData} movies={props.movies} />
+          ) : (
+            <AccessDenied />
+          )}
+        </Route>
+        <Route exact path="/user/watchlist">
+          {loggedIn ? (
+            <Watchlist userData={props.userData} movies={props.movies} />
+          ) : (
+            <AccessDenied />
+          )}
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
