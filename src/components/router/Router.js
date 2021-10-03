@@ -112,7 +112,9 @@ const Router = (props) => {
             <AccessDenied />
           )}
         </Route>
-        <Route exact path="/user/edit" component={UserEdit} />
+        <Route exact path="/user/edit">
+          {loggedIn ? <UserEdit userData={props.userData} /> : <AccessDenied />}
+        </Route>
         <Route exact path="/user/favorites" component={Favorites} />
         <Route exact path="/user/watchlist" component={Watchlist} />
         <Route component={NotFound} />

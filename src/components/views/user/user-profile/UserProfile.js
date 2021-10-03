@@ -68,6 +68,16 @@ function UserProfile(props) {
                   "/" +
                   birth.getFullYear()}
               </p>
+              <p>
+                <Link to="/user/favorites">
+                  <Button variant="link">Your Favorite Movies</Button>
+                </Link>
+              </p>
+              <p>
+                <Link to="/user/watchlist">
+                  <Button variant="link">Your Watchlist</Button>
+                </Link>
+              </p>
             </div>
             <div className="interactions">
               <Link to="/user/edit">

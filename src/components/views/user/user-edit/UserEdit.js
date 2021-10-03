@@ -4,32 +4,39 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function UserEdit(props) {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(props.userData.Username);
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [birthDate, setBirthdate] = useState("");
-  const [isValid, setIsValid] = useState(true);
+  const [email, setEmail] = useState(props.userData.Email);
+  const [name, setName] = useState(props.userData.Name);
+  const [birthDate, setBirthdate] = useState(props.userData.BirthDate);
+  const [isValid, setIsValid] = useState("");
+  const [isNotValid, setIsNotValid] = useState("");
+
+  const birth = new Date(birthDate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`https://notflixapi.herokuapp.com/users/${username}`, {
-        Username: username,
-        Password: password,
-        Name: name,
-        Email: email,
-        BirthDate: birthDate,
-      })
+      .put(
+        `https://notflixapi.herokuapp.com/users/${props.userData.Username}`,
+        {
+          Username: username,
+          Password: password,
+          Name: name,
+          Email: email,
+          BirthDate: birthDate,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
       .then((res) => {
         const data = res.data;
-        console.log(data);
         setIsValid(true);
-        window.open("/login", "_self");
       })
       .catch((err) => {
-        console.error(`🛑 Error registering the user \n${err}`);
-        setIsValid(false);
+        console.error(`🛑 Error updating the user \n${err}`);
+        setIsNotValid(true);
       });
   };
 
@@ -39,28 +46,26 @@ function UserEdit(props) {
         <h2 className="mb-30">Update Profile</h2>
         {isValid ? (
           <div>
-            <Alert variant="danger" show={false}></Alert>
+            <Alert variant="success" show={true}>
+              Your info have been updated! 👌
+            </Alert>
           </div>
         ) : (
-          <Alert variant="danger" show={true}>
-            🛑 Something went wrong with your registration.
+          ""
+        )}
+        {isNotValid ? (
+          <Alert variant="danger" show={false}>
+            🛑 Something went wrong with your info update.
           </Alert>
+        ) : (
+          ""
         )}
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Your Username"
-              required
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Your Password"
+              placeholder="New Password"
               required
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -71,6 +76,7 @@ function UserEdit(props) {
               type="email"
               placeholder="Your Email"
               required
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
@@ -79,6 +85,7 @@ function UserEdit(props) {
             <Form.Control
               type="text"
               placeholder="Your Full Name"
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
@@ -88,6 +95,7 @@ function UserEdit(props) {
               type="date"
               placeholder="Your birthday"
               onChange={(e) => setBirthdate(e.target.value)}
+              value={birthDate}
             />
           </Form.Group>
 

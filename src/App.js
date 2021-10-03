@@ -31,10 +31,6 @@ export class App extends React.Component {
   }
 
   onLogin(authData) {
-    // console.log(authData);
-    // this.setState({
-    //   user: authData.user.Username,
-    // });
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
   }
