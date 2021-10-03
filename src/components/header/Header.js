@@ -30,7 +30,7 @@ function Header(props) {
               <Nav.Link href="/directors">Directors</Nav.Link>
               <Nav.Link href="/actors">Actors</Nav.Link>
             </Nav>
-            {props.user ? (
+            {props.userData.Username ? (
               <Nav variant="pills text-center logged-in-menu">
                 {/* <Nav.Link href="/user/watchlist" title="Watchlist">
                   <i className="fas fa-bookmark mr-10"></i>
@@ -42,7 +42,7 @@ function Header(props) {
                 </Nav.Link> */}
                 <Nav.Link
                   href="/user"
-                  title={`${props.user}'s Profile`}
+                  title={`${props.userData.Username}'s Profile`}
                   className="user-profile-btn"
                 >
                   <i className="fas fa-user-astronaut"></i>

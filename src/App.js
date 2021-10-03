@@ -122,7 +122,6 @@ export class App extends React.Component {
     return (
       <div className="app">
         <Header
-          user={this.state.userData.Username}
           userData={this.state.userData}
           onLogin={(user) => this.onLogin(user)}
           onLogout={() => this.onLogout()}

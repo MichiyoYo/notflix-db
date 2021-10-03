@@ -120,5 +120,10 @@
     color: #fff;
     text-decoration: none;
     padding: 4px 9px !important;
+    &:hover {
+      color: #fff !important;
+      text-shadow: none;
+      box-shadow: 0 0 10px $pink;
+    }
   }
 }

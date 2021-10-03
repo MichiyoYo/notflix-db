@@ -13,6 +13,7 @@ function AllMovies(props) {
           md={6}
           sm={12}
           className="justify-content-center d-flex mb-30"
+          key={movie._id}
         >
           <MovieCard key={movie._id} movieData={movie} />
         </Col>

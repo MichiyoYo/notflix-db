@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Row, Col, Button } from "react-bootstrap";
 import MovieCard from "../../../movie-card/MovieCard";
@@ -13,6 +13,25 @@ function Favorites(props) {
     token: localStorage.getItem("token"),
   };
 
+  const hanldeRemoveMovie = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const movieToRemove = e.target.parentElement.parentElement;
+    const movieToRemoveId = movieToRemove.getAttribute("index");
+
+    removeFromFavorites(userSession.user, userSession.token, movieToRemoveId)
+      .then(() => {
+        userData.FavoriteMovies = userData.FavoriteMovies.filter(
+          (movie) => movie._id != movieToRemoveId
+        );
+        movieToRemove.classList.add("d-none");
+      })
+      .catch((err) => console.error(err));
+    console.log(movieToRemoveId);
+    console.log(userData.FavoriteMovies);
+  };
+
   const favs = [];
   userData.FavoriteMovies.map((movie) => favs.push(movie._id));
 
@@ -20,20 +39,6 @@ function Favorites(props) {
   favs.forEach((movieId) =>
     filteredMovies.push(movies.find((movie) => movie._id === movieId))
   );
-
-  const hanldeRemoveMovie = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const movieToRemoveId = e.target.parentElement.parentElement;
-    removeFromFavorites(
-      userSession.user,
-      userSession.token,
-      movieToRemoveId.getAttribute("index")
-    )
-      .then(() => movieToRemoveId.classList.add("d-none"))
-      .catch((err) => console.error(err));
-    console.log(movieToRemoveId);
-  };
 
   const cards = [];
   filteredMovies.map((movie) => {
@@ -65,7 +70,13 @@ function Favorites(props) {
           </Button>
           <Col sm={12}>
             <h1 className="text-center mb-50">Favorites</h1>
-            <Row className="favorite-movies">{cards}</Row>
+            <Row className="favorite-movies">
+              {cards.length > 0 ? (
+                cards
+              ) : (
+                <p className="text-center">You have no favorites 🤷</p>
+              )}
+            </Row>
           </Col>
         </Row>
       </Col>
