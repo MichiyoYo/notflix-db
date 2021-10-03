@@ -13,7 +13,18 @@ function Director(props) {
 
   const filmography = [];
   movies.map((movie) => {
-    filmography.push(<MovieCard key={movie._id} movieData={movie} />);
+    filmography.push(
+      <Col
+        xl={3}
+        lg={4}
+        md={6}
+        sm={12}
+        className="d-flex mb-30 p-0"
+        key={movie._id}
+      >
+        <MovieCard key={movie._id} movieData={movie} />
+      </Col>
+    );
   });
 
   return (

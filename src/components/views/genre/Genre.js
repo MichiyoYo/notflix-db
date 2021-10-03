@@ -9,7 +9,18 @@ function Genre(props) {
 
   const moviesInGenre = [];
   movies.map((movie) => {
-    moviesInGenre.push(<MovieCard key={movie._id} movieData={movie} />);
+    moviesInGenre.push(
+      <Col
+        xl={3}
+        lg={4}
+        md={6}
+        sm={12}
+        className="d-flex mb-30 p-0"
+        key={movie._id}
+      >
+        <MovieCard key={movie._id} movieData={movie} />
+      </Col>
+    );
   });
 
   return (
