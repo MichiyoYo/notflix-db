@@ -78,6 +78,9 @@
   .row {
     position: relative;
     padding: 30px 20px !important;
+    @media screen and (max-width: $small) {
+      padding: 0 !important;
+    }
     .back-btn {
       width: fit-content;
       position: absolute;

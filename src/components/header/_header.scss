@@ -16,15 +16,6 @@ header {
         color: $light-purple !important;
         text-shadow: 0 0 15px $light-purple;
       }
-      .fa-user-astronaut {
-        border: 2px solid #85838f;
-        padding: 10px 12px;
-        border-radius: 50%;
-        margin-top: -5px;
-        &:hover {
-          border: 2px solid $purple;
-        }
-      }
     }
     .logged-in-menu {
       a.nav-link {

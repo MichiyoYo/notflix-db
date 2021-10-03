@@ -17,11 +17,22 @@ function Favorites(props) {
 
   const cards = [];
   filteredMovies.map((movie) => {
-    cards.push(<MovieCard key={movie._id} movieData={movie} />);
+    cards.push(
+      <Col className="d-flex align-items-center flex-column card-wrap">
+        <MovieCard key={movie._id} movieData={movie} />
+        <Button
+          variant="primary"
+          className="remove-btn"
+          title="Remove from list"
+        >
+          <i className="fas fa-trash-alt"></i>
+        </Button>
+      </Col>
+    );
   });
 
   return (
-    <Row className="actor-details detail-view justify-content-center">
+    <Row className="favorites-view detail-view justify-content-center">
       <Col sm={12}>
         <Row>
           <Button onClick={() => historyData.goBack()} className="back-btn">

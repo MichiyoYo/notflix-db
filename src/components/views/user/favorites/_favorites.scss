@@ -1,0 +1,10 @@
+.favorites-view {
+  .card-wrap {
+    position: relative;
+    .remove-btn {
+      position: absolute;
+      top: 20px;
+      width: fit-content;
+    }
+  }
+}
