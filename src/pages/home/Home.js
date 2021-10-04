@@ -12,7 +12,8 @@ function Home(props) {
           <img className="pt-50" src={logo} alt="Large Notflix logo" />
         </h1>
         <h2 className="subtitle mb-30">
-          Not our mother's movie DB<span className="block mt-20">🍿 🎥 ⭐</span>
+          Not Your mother's movie DB
+          <span className="block mt-20">🍿 🎥 ⭐</span>
         </h2>
         <Link to="/login">
           <Button>Start having fun</Button>
