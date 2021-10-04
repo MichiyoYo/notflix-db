@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 
 import logo from "../../images/logo.png";
@@ -35,7 +36,7 @@ function Header(props) {
                 {/* <Nav.Link href="/user/watchlist" title="Watchlist">
                   <i className="fas fa-bookmark mr-10"></i>
                   <span className="label"> Watchlist</span>
-                </Nav.Link>
+                </Nav.Link> 
                 <Nav.Link href="/user/favorites" title="Favorite Movies">
                   <i className="fas fa-heart mr-10"></i>
                   <span className="label"> Favorites</span>
@@ -70,3 +71,9 @@ function Header(props) {
 }
 
 export default Header;
+
+Header.propTypes = {
+  userData: PropTypes.object,
+  onLogin: PropTypes.func,
+  onLogout: PropTypes.func,
+};

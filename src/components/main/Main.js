@@ -1,5 +1,6 @@
 import React from "react";
 import Router from "../router/Router";
+import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 
 function Main(props) {
@@ -17,3 +18,7 @@ function Main(props) {
 }
 
 export default Main;
+
+Main.propTypes = {
+  onLogin: PropTypes.func,
+};

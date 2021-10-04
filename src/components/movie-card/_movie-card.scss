@@ -15,12 +15,23 @@
   }
   .card-body {
     padding: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     .card-text {
       font-size: 15px;
+      flex: 1 1 auto;
     }
-    .interactions {
-      float: right;
-      margin-top: 5px;
+    .card-title {
+      flex: 1 1 auto;
+    }
+    .buttons {
+      flex: 1 1 auto;
+      justify-self: flex-end;
+      .interactions {
+        float: right;
+        margin-top: 5px;
+      }
     }
   }
 }
