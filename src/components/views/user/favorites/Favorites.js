@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { Row, Col, Button } from "react-bootstrap";
 import MovieCard from "../../../movie-card/MovieCard";
 import { removeFromFavorites } from "../../../../helpers/movieOps";
+import PropTypes from "prop-types";
 
 function Favorites(props) {
   const { userData, movies } = props;
@@ -83,3 +84,8 @@ function Favorites(props) {
 }
 
 export default Favorites;
+
+Favorites.propTypes = {
+  userData: PropTypes.object.isRequired,
+  movies: PropTypes.array.isRequired,
+};

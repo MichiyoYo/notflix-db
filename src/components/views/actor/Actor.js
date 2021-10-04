@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
+import PropTypes from "prop-types";
 import MovieCard from "../../movie-card/MovieCard";
 
 function Actor(props) {
@@ -14,7 +15,6 @@ function Actor(props) {
   filmography.forEach((movieId) => {
     filmographyData.push(movies.find((movie) => movie._id === movieId));
   });
-  console.log(filmographyData);
 
   const cards = [];
   filmographyData.map((movie) => {
@@ -24,7 +24,7 @@ function Actor(props) {
         lg={4}
         md={6}
         sm={12}
-        className=" d-flex mb-30 p-0"
+        className=" d-flex mb-30 "
         key={movie._id}
       >
         <MovieCard key={movie._id} movieData={movie} />
@@ -58,3 +58,8 @@ function Actor(props) {
 }
 
 export default Actor;
+
+Actor.propTypes = {
+  actorData: PropTypes.object.isRequired,
+  movies: PropTypes.array.isRequired,
+};

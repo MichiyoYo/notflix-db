@@ -43,7 +43,6 @@ export class App extends React.Component {
   }
 
   getUserInfo(username, token) {
-    console.log(username);
     axios
       .get(`https://notflixapi.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },

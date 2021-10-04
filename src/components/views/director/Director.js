@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 import MovieCard from "../../movie-card/MovieCard";
+import PropTypes from "prop-types";
 
 function Director(props) {
   const { directorData, movies } = props;
@@ -19,7 +20,7 @@ function Director(props) {
         lg={4}
         md={6}
         sm={12}
-        className="d-flex mb-30 p-0"
+        className="d-flex mb-30 "
         key={movie._id}
       >
         <MovieCard key={movie._id} movieData={movie} />
@@ -76,3 +77,8 @@ function Director(props) {
 }
 
 export default Director;
+
+Director.propTypes = {
+  directorData: PropTypes.object.isRequired,
+  movies: PropTypes.array.isRequired,
+};

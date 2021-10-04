@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import axios from "axios";
 
 function UserEdit(props) {
@@ -122,3 +122,7 @@ function UserEdit(props) {
 }
 
 export default UserEdit;
+
+UserEdit.propTypes = {
+  userData: PropTypes.object.isRequired,
+};

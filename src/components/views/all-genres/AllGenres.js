@@ -1,6 +1,8 @@
 import React from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 function AllGenres(props) {
   return (
     <Row className="justify-content-center">
@@ -19,3 +21,7 @@ function AllGenres(props) {
 }
 
 export default AllGenres;
+
+AllGenres.propTypes = {
+  genres: PropTypes.array.isRequired,
+};

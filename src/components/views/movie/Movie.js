@@ -3,6 +3,7 @@ import { Row, Col, Image, Button, Alert, Toast } from "react-bootstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Rating from "../../rating/Rating";
 import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
+import PropTypes from "prop-types";
 
 function Movie(props) {
   const { movieData } = props;
@@ -149,3 +150,7 @@ function Movie(props) {
 }
 
 export default Movie;
+
+Movie.propTypes = {
+  movieData: PropTypes.object.isRequired,
+};

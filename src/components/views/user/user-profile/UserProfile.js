@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Alert } from "react-bootstrap";
-import { useHistory } from "react-router";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -34,7 +34,7 @@ function UserProfile(props) {
         <Row className="user-details-wrap justify-content-center">
           <Col md={6} sm={12} className="copy">
             <div className="header">
-              <h2 className="mb-50">Welcome {userData.Username} ! 👋</h2>
+              <h2 className="mb-50">Hey {userData.Username} ! 👋</h2>
               {isValid ? (
                 <div>
                   <Alert variant="danger" show={false}></Alert>
@@ -70,12 +70,12 @@ function UserProfile(props) {
               </p>
               <p>
                 <Link to="/user/favorites">
-                  <Button variant="link">Your Favorite Movies</Button>
+                  <Button variant="link">Favorite Movies</Button>
                 </Link>
               </p>
               <p>
                 <Link to="/user/watchlist">
-                  <Button variant="link">Your Watchlist</Button>
+                  <Button variant="link">Watchlist</Button>
                 </Link>
               </p>
             </div>
@@ -93,3 +93,7 @@ function UserProfile(props) {
 }
 
 export default UserProfile;
+
+UserProfile.propTypes = {
+  userData: PropTypes.object.isRequired,
+};

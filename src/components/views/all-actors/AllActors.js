@@ -1,5 +1,6 @@
 import React from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function AllActors(props) {
@@ -20,3 +21,7 @@ function AllActors(props) {
 }
 
 export default AllActors;
+
+AllActors.propTypes = {
+  actors: PropTypes.array.isRequired,
+};

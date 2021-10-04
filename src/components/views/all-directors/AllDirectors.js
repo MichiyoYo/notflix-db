@@ -1,6 +1,7 @@
 import React from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function AllDirectors(props) {
   return (
@@ -20,3 +21,7 @@ function AllDirectors(props) {
 }
 
 export default AllDirectors;
+
+AllDirectors.propTypes = {
+  directors: PropTypes.array.isRequired,
+};

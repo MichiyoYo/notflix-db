@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Row, Col, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 import MovieCard from "../../../movie-card/MovieCard";
 import { removeFromWatchlist } from "../../../../helpers/movieOps";
 
@@ -85,3 +86,8 @@ function Watchlist(props) {
 }
 
 export default Watchlist;
+
+Watchlist.propTypes = {
+  userData: PropTypes.object.isRequired,
+  movies: PropTypes.array.isRequired,
+};

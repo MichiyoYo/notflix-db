@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import MovieCard from "../../movie-card/MovieCard";
+import PropTypes from "prop-types";
 
 function AllMovies(props) {
   return (
@@ -23,3 +24,7 @@ function AllMovies(props) {
 }
 
 export default AllMovies;
+
+AllMovies.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
