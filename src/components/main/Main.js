@@ -18,7 +18,3 @@ function Main(props) {
 }
 
 export default Main;
-
-Main.propTypes = {
-  onLogin: PropTypes.func,
-};

@@ -73,7 +73,7 @@ function Header(props) {
 export default Header;
 
 Header.propTypes = {
-  userData: PropTypes.object,
-  onLogin: PropTypes.func,
-  onLogout: PropTypes.func,
+  userData: PropTypes.object.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
 };

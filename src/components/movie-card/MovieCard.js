@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { addToFavorites, addToWatchlist } from "../../helpers/movieOps";
 
 function MovieCard(props) {
@@ -75,3 +76,25 @@ function MovieCard(props) {
 }
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  movieData: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string,
+    Description: PropTypes.string.isRequired,
+    Featured: PropTypes.bool,
+    ReleaseDate: PropTypes.string,
+    Rating: PropTypes.number,
+    Cast: PropTypes.array,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string,
+      Description: PropTypes.string,
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string,
+      Bio: PropTypes.string,
+      BirthDate: PropTypes.string,
+      DeathDate: PropTypes.string,
+    }),
+  }).isRequired,
+};
