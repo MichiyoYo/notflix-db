@@ -45,6 +45,7 @@ function Header(props) {
                   title={`${props.userData.Username}'s Profile`}
                   className="user-profile-btn"
                 >
+                  <span className="username">{`${props.userData.Username} `}</span>
                   <i className="fas fa-user-astronaut"></i>
                   <span className="label pl-10"> Profile</span>
                 </Nav.Link>

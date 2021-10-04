@@ -36,6 +36,10 @@ function Register(props) {
       });
   };
 
+  const validate = () => {
+    form.current.reportValidity();
+  };
+
   return (
     <Row className="justify-content-center">
       <Col lg={6} md={8} sm={12} className="login-wrapper">
@@ -49,27 +53,31 @@ function Register(props) {
             🛑 Something went wrong with your registration.
           </Alert>
         )}
-        <Form>
+        <Form ref={form} onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
+            <Form.Label>Username*</Form.Label>
             <Form.Control
               type="text"
               placeholder="Your Username"
               required
+              pattern=".{8,}"
+              title="Must be 8 or more characters"
               onChange={(e) => setUsername(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Password*</Form.Label>
             <Form.Control
               type="password"
               placeholder="Your Password"
               required
+              pattern=".{8,}"
+              title="Must be 8 or more characters"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
+            <Form.Label>Email*</Form.Label>
             <Form.Control
               type="email"
               placeholder="Your Email"
@@ -93,12 +101,15 @@ function Register(props) {
               onChange={(e) => setBirthdate(e.target.value)}
             />
           </Form.Group>
+          <p>
+            <small>* These fields are required</small>
+          </p>
 
           <Button
             variant="primary"
             type="submit"
             className="mt-10"
-            onClick={handleSubmit}
+            onClick={validate}
           >
             Submit
           </Button>
