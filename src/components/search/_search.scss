@@ -1,0 +1,18 @@
+.search-input {
+  background: transparent;
+  border: 2px solid $purple;
+  color: $pink;
+  box-shadow: 0 0 10px $purple !important;
+  &::placeholder {
+    color: $purple;
+  }
+  &:focus {
+    background: transparent;
+    color: $pink;
+    border: 2px solid $pink;
+    box-shadow: 0 0 10px $pink !important;
+    &::placeholder {
+      color: $pink;
+    }
+  }
+}
