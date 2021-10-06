@@ -18,7 +18,7 @@ import UserEdit from "../views/user/user-edit/UserEdit";
 import Favorites from "../views/user/favorites/Favorites";
 import Watchlist from "../views/user/watchlist/Watchlist";
 import AccessDenied from "../access-denied/AccessDenied";
-import PropTypes, { object } from "prop-types";
+import PropTypes from "prop-types";
 
 const Router = (props) => {
   const loggedIn = localStorage.getItem("user") !== null;

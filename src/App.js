@@ -127,7 +127,11 @@ class App extends React.Component {
           onLogin={(user) => this.onLogin(user)}
           onLogout={() => this.onLogout()}
         />
-        <Main movies={movies} onLogin={(user) => this.onLogin(user)} />
+        <Main
+          movies={movies}
+          userData={userData}
+          onLogin={(user) => this.onLogin(user)}
+        />
         <Footer />
       </div>
     );
