@@ -7,7 +7,7 @@
     color: $purple;
   }
   &:focus {
-    background: transparent;
+    background: $bg-color;
     color: $pink;
     border: 2px solid $pink;
     box-shadow: 0 0 10px $pink !important;
