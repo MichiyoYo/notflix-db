@@ -58,8 +58,3 @@ function Actor(props) {
 }
 
 export default Actor;
-
-Actor.propTypes = {
-  actorData: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-};

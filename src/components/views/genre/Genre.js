@@ -50,8 +50,3 @@ function Genre(props) {
 }
 
 export default Genre;
-
-Genre.propTypes = {
-  genreData: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-};

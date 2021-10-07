@@ -11,7 +11,3 @@ function Rating(props) {
 }
 
 export default Rating;
-
-Rating.propTypes = {
-  value: PropTypes.number.isRequired,
-};

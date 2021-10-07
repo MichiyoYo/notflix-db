@@ -77,8 +77,3 @@ function Director(props) {
 }
 
 export default Director;
-
-Director.propTypes = {
-  directorData: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-};

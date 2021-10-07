@@ -93,7 +93,3 @@ function UserProfile(props) {
 }
 
 export default UserProfile;
-
-UserProfile.propTypes = {
-  userData: PropTypes.object.isRequired,
-};

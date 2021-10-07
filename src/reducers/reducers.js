@@ -5,7 +5,14 @@ import {
   SET_DIRECTORS,
   SET_ACTORS,
   SET_FILTER,
+  SET_USERDATA,
+  UPDATE_USER,
+  ADD_TO_FAVS,
+  ADD_TO_WATCHLIST,
+  REMOVE_FROM_FAVS,
+  REMOVE_FROM_WATCHLIST,
 } from "../actions/actions";
+var _ = require("lodash");
 
 function visibilityFilter(state = "", action) {
   switch (action.type) {
@@ -52,10 +59,24 @@ function directors(state = [], action) {
   }
 }
 
+function userData(state = [], action) {
+  switch (action.type) {
+    case SET_USERDATA:
+      return action.value;
+    case UPDATE_USER:
+      let updatedUser = { ...state };
+      _.extend(updatedUser, action.info);
+      return updatedUser;
+    default:
+      return state;
+  }
+}
+
 export const moviesApp = combineReducers({
   visibilityFilter,
   movies,
   genres,
   actors,
   directors,
+  userData,
 });

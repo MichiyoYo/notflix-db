@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Image, Button, Alert, Toast } from "react-bootstrap";
+import { Row, Col, Image, Button, Toast } from "react-bootstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Rating from "../../rating/Rating";
 import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
@@ -14,12 +14,7 @@ const mapStateToProps = (state) => {
 function Movie(props) {
   const historyData = useHistory();
   const { movieId } = useParams();
-  const { movies } = props;
-
-  //  historyData.push(`/movies/${movieId}`);
-  console.log(movieId);
-
-  const movieData = movies.find((movie) => movie._id !== movieId);
+  const { movieData, movies } = props;
 
   const [addedToFavs, setAddedToFavs] = useState(false);
   const [addedToWatchlist, setAddedToWatchlist] = useState(false);

@@ -76,25 +76,3 @@ function MovieCard(props) {
 }
 
 export default MovieCard;
-
-MovieCard.propTypes = {
-  movieData: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string,
-    Description: PropTypes.string.isRequired,
-    Featured: PropTypes.bool,
-    ReleaseDate: PropTypes.string,
-    Rating: PropTypes.number,
-    Cast: PropTypes.array,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string,
-      Description: PropTypes.string,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string,
-      Bio: PropTypes.string,
-      BirthDate: PropTypes.string,
-      DeathDate: PropTypes.string,
-    }),
-  }).isRequired,
-};

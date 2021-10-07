@@ -21,7 +21,3 @@ function AllActors(props) {
 }
 
 export default AllActors;
-
-AllActors.propTypes = {
-  actors: PropTypes.array.isRequired,
-};

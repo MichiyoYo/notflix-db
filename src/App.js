@@ -9,15 +9,12 @@ import {
   setActors,
   setGenres,
   setDirectors,
+  setUserData,
 } from "./actions/actions";
 
 import "./scss/styles.scss";
 
 class App extends React.Component {
-  state = {
-    userData: {},
-  };
-
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
@@ -37,7 +34,7 @@ class App extends React.Component {
   onLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({ userData: {} });
+    //this.setState({ userData: {} });
     window.open("/login", "_self");
   }
 
@@ -47,9 +44,7 @@ class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        this.setState({
-          userData: res.data,
-        });
+        this.props.setUserData(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -109,7 +104,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { userData } = this.state;
+    let { userData } = this.props;
 
     return (
       <div className="app">
@@ -135,6 +130,7 @@ let mapStateToProps = (state) => {
     genres: state.genres,
     directors: state.directors,
     actors: state.actors,
+    userData: state.userData,
   };
 };
 
@@ -143,4 +139,5 @@ export default connect(mapStateToProps, {
   setGenres,
   setDirectors,
   setActors,
+  setUserData,
 })(App);

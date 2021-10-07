@@ -25,7 +25,3 @@ function AllGenres(props) {
 }
 
 export default AllGenres;
-
-AllGenres.propTypes = {
-  genres: PropTypes.array.isRequired,
-};

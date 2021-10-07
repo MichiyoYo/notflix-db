@@ -86,8 +86,3 @@ function Watchlist(props) {
 }
 
 export default Watchlist;
-
-Watchlist.propTypes = {
-  userData: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-};

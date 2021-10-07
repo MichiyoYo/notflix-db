@@ -40,7 +40,3 @@ function AllMovies(props) {
 }
 
 export default connect(mapStateToProps)(AllMovies);
-
-AllMovies.propTypes = {
-  movies: PropTypes.array.isRequired,
-};

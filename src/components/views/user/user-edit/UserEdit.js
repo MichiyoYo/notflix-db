@@ -1,7 +1,14 @@
 import React, { useState, useRef } from "react";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { updateUser } from "../../../../actions/actions";
+
+const mapStateToProps = (state) => {
+  const { userData } = state;
+  return { userData };
+};
 
 function UserEdit(props) {
   const [username, setUsername] = useState(props.userData.Username);
@@ -12,28 +19,31 @@ function UserEdit(props) {
   const [isValid, setIsValid] = useState("");
   const [isNotValid, setIsNotValid] = useState("");
 
-  const birth = new Date(birthDate);
+  var date = new Date(birthDate).toISOString().substring(0, 10);
 
   const form = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newInfo = {
+      Username: username,
+      Password: password,
+      Name: name,
+      Email: email,
+      BirthDate: birthDate,
+    };
     axios
       .put(
         `https://notflixapi.herokuapp.com/users/${props.userData.Username}`,
-        {
-          Username: username,
-          Password: password,
-          Name: name,
-          Email: email,
-          BirthDate: birthDate,
-        },
+        newInfo,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       )
       .then((res) => {
         const data = res.data;
+        props.updateUser(newInfo);
+
         setIsValid(true);
       })
       .catch((err) => {
@@ -68,32 +78,46 @@ function UserEdit(props) {
         )}
         <Form ref={form} onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Username*</Form.Label>
+            <Form.Control
+              type="text"
+              defaultValue={username}
+              required
+              disabled
+              pattern=".{8,}"
+              title="Must be 8 or more characters, only alphanumeric characters are allowed"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <small>This value cannot be changed</small>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password*</Form.Label>
             <Form.Control
               type="password"
-              placeholder="New Password"
-              required
               pattern=".{8,}"
+              defaultValue={password}
               title="Must be 8 or more characters"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <small>Please insert old or new password</small>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
+            <Form.Label>Email*</Form.Label>
             <Form.Control
               type="email"
               placeholder="Your Email"
               required
-              value={email}
+              defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <small>Please insert old or new email address</small>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Full Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Your Full Name"
-              value={name}
+              defaultValue={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
@@ -102,8 +126,8 @@ function UserEdit(props) {
             <Form.Control
               type="date"
               placeholder="Your birthday"
+              defaultValue={date}
               onChange={(e) => setBirthdate(e.target.value)}
-              value={birth}
             />
           </Form.Group>
 
@@ -121,8 +145,4 @@ function UserEdit(props) {
   );
 }
 
-export default UserEdit;
-
-UserEdit.propTypes = {
-  userData: PropTypes.object.isRequired,
-};
+export default connect(mapStateToProps, { updateUser })(UserEdit);

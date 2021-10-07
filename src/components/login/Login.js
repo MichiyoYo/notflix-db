@@ -95,8 +95,3 @@ function Login(props) {
 }
 
 export default Login;
-
-Login.propTypes = {
-  user: PropTypes.string.isRequired,
-  onLogin: PropTypes.func.isRequired,
-};

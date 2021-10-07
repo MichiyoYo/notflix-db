@@ -21,7 +21,3 @@ function AllDirectors(props) {
 }
 
 export default AllDirectors;
-
-AllDirectors.propTypes = {
-  directors: PropTypes.array.isRequired,
-};

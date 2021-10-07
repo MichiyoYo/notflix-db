@@ -33,14 +33,6 @@ function Header(props) {
             </Nav>
             {props.userData.Username ? (
               <Nav variant="pills text-center logged-in-menu">
-                {/* <Nav.Link href="/user/watchlist" title="Watchlist">
-                  <i className="fas fa-bookmark mr-10"></i>
-                  <span className="label"> Watchlist</span>
-                </Nav.Link> 
-                <Nav.Link href="/user/favorites" title="Favorite Movies">
-                  <i className="fas fa-heart mr-10"></i>
-                  <span className="label"> Favorites</span>
-                </Nav.Link> */}
                 <Nav.Link
                   href="/user"
                   title={`${props.userData.Username}'s Profile`}
@@ -71,9 +63,3 @@ function Header(props) {
 }
 
 export default Header;
-
-Header.propTypes = {
-  userData: PropTypes.object.isRequired,
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-};

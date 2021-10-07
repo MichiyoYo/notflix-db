@@ -84,8 +84,3 @@ function Favorites(props) {
 }
 
 export default Favorites;
-
-Favorites.propTypes = {
-  userData: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-};
