@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 function AllGenres(props) {
   return (

@@ -4,7 +4,12 @@ import Footer from "./components/footer/Footer";
 import Main from "./components/main/Main";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setMovies } from "./actions/actions";
+import {
+  setMovies,
+  setActors,
+  setGenres,
+  setDirectors,
+} from "./actions/actions";
 
 import "./scss/styles.scss";
 
@@ -12,7 +17,7 @@ class App extends React.Component {
   state = {
     userData: {},
     //movies: [],
-    genres: [],
+    //genres: [],
     directors: [],
     actors: [],
   };
@@ -92,9 +97,10 @@ class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        this.setState({
-          genres: res.data,
-        });
+        // this.setState({
+        //   genres: res.data,
+        // });
+        this.props.setGenres(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -117,7 +123,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { movies } = this.props;
+    let { movies, genres } = this.props;
     let { userData } = this.state;
 
     return (
@@ -129,6 +135,7 @@ class App extends React.Component {
         />
         <Main
           movies={movies}
+          genres={genres}
           userData={userData}
           onLogin={(user) => this.onLogin(user)}
         />
@@ -139,7 +146,7 @@ class App extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, genres: state.genres };
 };
 
-export default connect(mapStateToProps, { setMovies })(App);
+export default connect(mapStateToProps, { setMovies, setGenres })(App);

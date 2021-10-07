@@ -32,13 +32,14 @@ function Genre(props) {
             <i className="fas fa-times"></i>
           </Button>
           <Col sm={12}>
-            <h2 className="mb-50">{genreData.Name}</h2>
+            <h2 className="mb-50 pt-30">{genreData.Name}</h2>
           </Col>
           <Col sm={12}>
             <p className="description">{genreData.Description}</p>
           </Col>
-
-          <Col md={12} className="mt-50">
+        </Row>
+        <Row>
+          <Col className="mt-50">
             <h3 className="mb-10">Movies in this genre</h3>
             <Row className="filmography p-0">{moviesInGenre}</Row>
           </Col>
