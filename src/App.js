@@ -16,10 +16,6 @@ import "./scss/styles.scss";
 class App extends React.Component {
   state = {
     userData: {},
-    //movies: [],
-    //genres: [],
-    directors: [],
-    actors: [],
   };
 
   componentDidMount() {
@@ -66,9 +62,6 @@ class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // this.setState({
-        //   movies: res.data,
-        // });
         this.props.setMovies(res.data);
       })
       .catch((err) => {
@@ -82,9 +75,7 @@ class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        this.setState({
-          directors: res.data,
-        });
+        this.props.setDirectors(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -97,9 +88,6 @@ class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // this.setState({
-        //   genres: res.data,
-        // });
         this.props.setGenres(res.data);
       })
       .catch((err) => {
@@ -113,9 +101,7 @@ class App extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        this.setState({
-          actors: res.data,
-        });
+        this.props.setActors(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -123,7 +109,6 @@ class App extends React.Component {
   }
 
   render() {
-    let { movies, genres } = this.props;
     let { userData } = this.state;
 
     return (
@@ -134,8 +119,7 @@ class App extends React.Component {
           onLogout={() => this.onLogout()}
         />
         <Main
-          movies={movies}
-          genres={genres}
+          {...this.props}
           userData={userData}
           onLogin={(user) => this.onLogin(user)}
         />
@@ -146,7 +130,17 @@ class App extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies, genres: state.genres };
+  return {
+    movies: state.movies,
+    genres: state.genres,
+    directors: state.directors,
+    actors: state.actors,
+  };
 };
 
-export default connect(mapStateToProps, { setMovies, setGenres })(App);
+export default connect(mapStateToProps, {
+  setMovies,
+  setGenres,
+  setDirectors,
+  setActors,
+})(App);
