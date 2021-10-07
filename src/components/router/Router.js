@@ -40,19 +40,9 @@ const Router = (props) => {
         <Route exact path="/movies">
           {loggedIn ? <AllMovies movies={props.movies} /> : <AccessDenied />}
         </Route>
-        <Route
-          path="/movies/:movieId"
-          render={({ match }) => {
-            return (
-              <Movie
-                movieData={props.movies.find(
-                  (movie) => movie._id === match.params.movieId
-                )}
-              />
-            );
-          }}
-        ></Route>
-
+        <Route path="/movies/:movieId">
+          <Movie />
+        </Route>
         <Route exact path="/genres">
           <AllGenres genres={props.genres} />
         </Route>

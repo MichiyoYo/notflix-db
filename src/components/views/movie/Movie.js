@@ -3,11 +3,23 @@ import { Row, Col, Image, Button, Alert, Toast } from "react-bootstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Rating from "../../rating/Rating";
 import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+  };
+};
 
 function Movie(props) {
-  const { movieData } = props;
   const historyData = useHistory();
+  const { movieId } = useParams();
+  const { movies } = props;
+
+  //  historyData.push(`/movies/${movieId}`);
+  console.log(movieId);
+
+  const movieData = movies.find((movie) => movie._id !== movieId);
 
   const [addedToFavs, setAddedToFavs] = useState(false);
   const [addedToWatchlist, setAddedToWatchlist] = useState(false);
@@ -149,8 +161,4 @@ function Movie(props) {
   );
 }
 
-export default Movie;
-
-Movie.propTypes = {
-  movieData: PropTypes.object.isRequired,
-};
+export default connect(mapStateToProps)(Movie);
