@@ -1,12 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import Genre from "../genre/Genre";
 
 function AllGenres(props) {
-  const { genres, movies } = props;
+  const { genres } = props;
   return (
     <Row className="justify-content-center">
       <h1 className="text-center mb-50">Genres</h1>

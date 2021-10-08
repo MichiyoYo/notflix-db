@@ -30,7 +30,7 @@ function Favorites(props) {
     removeFromFavorites(userSession.user, userSession.token, movieToRemoveId)
       .then(() => {
         userData.FavoriteMovies = userData.FavoriteMovies.filter(
-          (movie) => movie._id != movieToRemoveId
+          (movie) => movie._id !== movieToRemoveId
         );
         movieToRemove.classList.add("d-none");
         props.updateUser(userData);
