@@ -3,7 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import logo from "../../images/logo.png";
 import SocialIcons from "../social-icons/SocialIcons";
 
-function Footer(props) {
+/**
+ * Footer component
+ * @returns a JSX object that renders the footer
+ */
+function Footer() {
   return (
     <footer>
       <Container fluid>

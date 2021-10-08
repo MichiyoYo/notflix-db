@@ -10,6 +10,11 @@ const mapStateToProps = (state) => {
   return { visibilityFilter };
 };
 
+/**
+ * AllMovies component displays a list of movie cards created from the movies prop
+ * @param {*} props
+ * @returns a JSX element that holds the list of movie cards and a search field
+ */
 function AllMovies(props) {
   const { movies, visibilityFilter } = props;
   let filteredMovies = movies;

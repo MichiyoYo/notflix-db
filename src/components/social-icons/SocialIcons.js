@@ -1,6 +1,10 @@
 import React from "react";
 
-function SocialIcons(props) {
+/**
+ * SocialIcons component, renders social icons
+ * @returns a JSX element that holds the social icons
+ */
+function SocialIcons() {
   return (
     <div className="socials block mt-10">
       <a

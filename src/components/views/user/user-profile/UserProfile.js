@@ -3,6 +3,11 @@ import { Row, Col, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+/**
+ * UserProfile component, renders the info about the user
+ * @param {*} props
+ * @returns a JSX element holding the info about the logged user
+ */
 function UserProfile(props) {
   const { userData } = props;
   const birth = new Date(userData.BirthDate);

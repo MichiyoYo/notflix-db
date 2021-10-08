@@ -1,7 +1,12 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
+/**
+ * NotFound component, renders a "not found" message when there are no matching urls in the router
+ * @param {} props
+ * @returns a JSX element that displays a not found message
+ */
 function NotFound(props) {
   const back = useHistory();
   return (

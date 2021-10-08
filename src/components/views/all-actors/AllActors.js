@@ -2,6 +2,11 @@ import React from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+/**
+ * AllActors component, displays a list of links that lead to the actors' info
+ * @param {*} props
+ * @returns a JSX element that holds a list of links
+ */
 function AllActors(props) {
   return (
     <Row className="justify-content-center">

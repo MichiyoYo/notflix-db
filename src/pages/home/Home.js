@@ -3,7 +3,11 @@ import React from "react";
 import logo from "../../images/logo2x.png";
 import { Link } from "react-router-dom";
 
-function Home(props) {
+/**
+ * Home component, renders a welcome message on the home page of the site
+ * @returns a JSX element that holds a welcome message
+ */
+function Home() {
   return (
     <Row className="justify-content-center">
       <Col lg={6} md={8} sm={12} className="text-center home-content">

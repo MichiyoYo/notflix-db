@@ -3,6 +3,12 @@ import { Row, Col, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 import MovieCard from "../../movie-card/MovieCard";
 
+/**
+ * Genre component, renders the info about the actor passed by props, it also displays a list of movie card components
+ * that are categorized under this genre
+ * @param {*} props
+ * @returns a JSX element holding the genre's info
+ */
 function Genre(props) {
   const { genreData, movies } = props;
   const histroyData = useHistory();

@@ -2,6 +2,11 @@ import React from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+/**
+ * AllGenres component, displays a list of links that lead to the gernes' info
+ * @param {*} props
+ * @returns a JSX element that holds a list of links
+ */
 function AllGenres(props) {
   const { genres } = props;
   return (

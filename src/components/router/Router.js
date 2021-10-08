@@ -18,6 +18,11 @@ import Favorites from "../views/user/favorites/Favorites";
 import Watchlist from "../views/user/watchlist/Watchlist";
 import AccessDenied from "../access-denied/AccessDenied";
 
+/**
+ * The Router component displays different components based on the matching url
+ * @param {*} props
+ * @returns different components based on the matching url
+ */
 const Router = (props) => {
   const loggedIn = localStorage.getItem("user") !== null;
   return (

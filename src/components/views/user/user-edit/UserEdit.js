@@ -10,6 +10,11 @@ const mapStateToProps = (state) => {
   return { userData };
 };
 
+/**
+ * UserEdit component, lets the user update their info
+ * @param {*} props
+ * @returns a JSX element holding the form to update the user info
+ */
 function UserEdit(props) {
   const historyData = useHistory();
 

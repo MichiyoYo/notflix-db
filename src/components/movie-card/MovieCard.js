@@ -3,6 +3,11 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { addToFavorites, addToWatchlist } from "../../helpers/movieOps";
 
+/**
+ * MovieCard component, renders a bootstrap card holding a few info about a movie
+ * @param {} props
+ * @returns a JSX element holding a movie card
+ */
 function MovieCard(props) {
   const { movieData } = props;
 

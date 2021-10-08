@@ -11,6 +11,11 @@ const mapStateToProps = (state) => {
   return { userData };
 };
 
+/**
+ * Favorites renders a list of movies that are favorite by the user
+ * @param {*} props
+ * @returns a JSX element that holds a list of movie cards
+ */
 function Favorites(props) {
   const { userData, movies } = props;
   const historyData = useHistory();

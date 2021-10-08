@@ -2,6 +2,12 @@ import React from "react";
 import Router from "../router/Router";
 import { Container, Row, Col } from "react-bootstrap";
 
+/**
+ * Main component, it is the main container of the application.
+ * It holds the component Router which, based on the url, renders the right component
+ * @param {*} props
+ * @returns a JSX element that holds a Router component
+ */
 function Main(props) {
   return (
     <main>

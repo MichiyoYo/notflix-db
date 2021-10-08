@@ -11,6 +11,11 @@ const mapStateToProps = (state) => {
   return { userData };
 };
 
+/**
+ * Movie component renders all the info about the movie
+ * @param {*} props
+ * @returns a JSX element that displays the info about this movie
+ */
 function Movie(props) {
   const historyData = useHistory();
   const { movieData, userData } = props;

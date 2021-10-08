@@ -2,7 +2,11 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function AccessDenied(props) {
+/**
+ * Action Denied Component
+ * @returns a JSX object that displays the message "Action Denied"
+ */
+function AccessDenied() {
   return (
     <div>
       <Row className="access-denied  justify-content-center">

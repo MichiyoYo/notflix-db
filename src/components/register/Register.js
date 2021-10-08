@@ -3,7 +3,11 @@ import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Register(props) {
+/**
+ * Register component, adds a new user to the database
+ * @returns a JSX element that renders the registration form
+ */
+function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +19,6 @@ function Register(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, name, birthDate);
     axios
       .post("https://notflixapi.herokuapp.com/users/register", {
         Username: username,
@@ -26,7 +29,6 @@ function Register(props) {
       })
       .then((res) => {
         const data = res.data;
-        console.log(data);
         setIsValid(true);
         window.open("/login", "_self");
       })

@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Main from "./components/main/Main";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { connect } from "react-redux";
 import {
@@ -14,6 +15,10 @@ import {
 
 import "./scss/styles.scss";
 
+/**
+ * The App component is the main component of the application and holds the the methods to initialize the store,
+ * lifecycle methods and other initializers
+ */
 class App extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
@@ -104,18 +109,16 @@ class App extends React.Component {
   }
 
   render() {
-    let { userData } = this.props;
-
     return (
       <div className="app">
         <Header
-          userData={userData}
+          userData={this.props.userData}
           onLogin={(user) => this.onLogin(user)}
           onLogout={() => this.onLogout()}
         />
         <Main
           {...this.props}
-          userData={userData}
+          userData={this.props.userData}
           onLogin={(user) => this.onLogin(user)}
         />
         <Footer />

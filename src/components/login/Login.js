@@ -3,6 +3,11 @@ import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+/**
+ * Login component
+ * @param {*} props
+ * @returns a JSX element that renders the login form
+ */
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

@@ -3,6 +3,11 @@ import { Container, Nav, Navbar, Button } from "react-bootstrap";
 
 import logo from "../../images/logo.png";
 
+/**
+ * Header component utilizes the user data info to display the username in the navbar
+ * @param {*} props
+ * @returns a JSX object that renders the header
+ */
 function Header(props) {
   return (
     <header>

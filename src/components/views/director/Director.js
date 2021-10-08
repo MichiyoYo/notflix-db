@@ -3,6 +3,12 @@ import { Row, Col, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 import MovieCard from "../../movie-card/MovieCard";
 
+/**
+ * Director component, renders the info about the actor passed by props, it also displays a list of movie card components
+ * created from the filmography property of the director
+ * @param {*} props
+ * @returns a JSX element holding the director's info
+ */
 function Director(props) {
   const { directorData, movies } = props;
 

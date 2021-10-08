@@ -3,6 +3,11 @@ import { Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { setFilter } from "../../actions/actions";
 
+/**
+ * Search component, lets users filter the movies by title
+ * @param {*} props
+ * @returns a JSX element that holds the search input to filter the movies
+ */
 function Search(props) {
   return (
     <Form className="d-flex">

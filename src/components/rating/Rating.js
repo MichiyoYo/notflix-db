@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Rating component, displays a number of stars based on the rating value passed by props
+ * @param {*} props
+ * @returns a div containing the stars
+ */
 function Rating(props) {
   const stars = [];
   for (let i = 0; i < props.value; i++) {

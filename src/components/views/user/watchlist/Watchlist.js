@@ -11,6 +11,11 @@ const mapStateToProps = (state) => {
   return { userData };
 };
 
+/**
+ * Watchlist component, renders a list of movie cards created from the movie list the user wants to watch
+ * @param {} props
+ * @returns a JSX element that holds the list of movies that the user wants to watch
+ */
 function Watchlist(props) {
   const { userData, movies } = props;
   const historyData = useHistory();
