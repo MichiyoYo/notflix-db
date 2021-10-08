@@ -7,6 +7,8 @@ The info about movies, directors, actors and genres are pulled from a MongoDB da
 
 ## Demo
 
+[Live Demo](https://notflix-db.netlify.app/)
+
 ![NotFlixDB Demo](demo/notflixdb-demo.gif)
 
 ## Tech Stack
