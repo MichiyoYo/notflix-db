@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 
 import logo from "../../images/logo.png";

@@ -15,7 +15,11 @@ function Footer(props) {
           >
             <p className="mb-0">
               Coded and Designed by{" "}
-              <a href="https://cristinalester.rocks" target="_blank">
+              <a
+                href="https://cristinalester.rocks"
+                rel="noreferrer"
+                target="_blank"
+              >
                 Cristina Lester
               </a>
             </p>

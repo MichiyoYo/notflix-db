@@ -11,3 +11,11 @@ The info about movies, directors, actors and genres are pulled from a MongoDB da
 - Express
 - React
 - Node
+
+## Setup
+
+To install the dependencies run
+`npm install`
+
+To start the application run
+`npm start`
