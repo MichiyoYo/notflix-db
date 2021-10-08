@@ -5,11 +5,15 @@ It provides a visual interface for the users to interact with the database, so t
 The users are also able to visualize their own info and update them or deregister themselves.
 The info about movies, directors, actors and genres are pulled from a MongoDB database which gets inquired through the Node application NotFlix API.
 
+## Demo
+
+![NotFlixDB Demo](demo/notflixdb-demo.gif)
+
 ## Tech Stack
 
 - MongoDB
 - Express
-- React
+- React + Redux
 - Node
 
 ## Setup
