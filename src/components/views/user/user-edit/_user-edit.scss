@@ -18,8 +18,10 @@
   form {
     .btn {
       display: block;
-      width: 100%;
       margin: 10px 0;
+      @media screen and (max-width: $small) {
+        width: 100%;
+      }
     }
   }
 }
