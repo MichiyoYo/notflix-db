@@ -18,7 +18,6 @@ import UserEdit from "../views/user/user-edit/UserEdit";
 import Favorites from "../views/user/favorites/Favorites";
 import Watchlist from "../views/user/watchlist/Watchlist";
 import AccessDenied from "../access-denied/AccessDenied";
-import PropTypes from "prop-types";
 
 const Router = (props) => {
   const loggedIn = localStorage.getItem("user") !== null;
@@ -54,7 +53,7 @@ const Router = (props) => {
         ></Route>
 
         <Route exact path="/genres">
-          <AllGenres genres={props.genres} />
+          {loggedIn ? <AllGenres genres={props.genres} /> : <AccessDenied />}
         </Route>
         <Route
           path="/genres/:genreName"
@@ -72,7 +71,11 @@ const Router = (props) => {
           }}
         />
         <Route exact path="/directors">
-          <AllDirectors directors={props.directors} />
+          {loggedIn ? (
+            <AllDirectors directors={props.directors} />
+          ) : (
+            <AccessDenied />
+          )}
         </Route>
         <Route
           path="/directors/:directorName"
@@ -90,7 +93,7 @@ const Router = (props) => {
           }}
         />
         <Route exact path="/actors">
-          <AllActors actors={props.actors} />
+          {loggedIn ? <AllActors actors={props.actors} /> : <AccessDenied />}
         </Route>
         <Route
           path="/actors/:actorName"

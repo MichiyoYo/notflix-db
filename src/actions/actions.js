@@ -60,31 +60,3 @@ export function updateUser(info) {
     info,
   };
 }
-
-export function addToFavs(movieId) {
-  return {
-    type: ADD_TO_FAVS,
-    movieId,
-  };
-}
-
-export function addToWatchlist(movieId) {
-  return {
-    type: ADD_TO_WATCHLIST,
-    movieId,
-  };
-}
-
-export function removeFromFavs(movieId) {
-  return {
-    type: REMOVE_FROM_FAVS,
-    movieId,
-  };
-}
-
-export function removeFromWatchlist(movieId) {
-  return {
-    type: REMOVE_FROM_WATCHLIST,
-    movieId,
-  };
-}

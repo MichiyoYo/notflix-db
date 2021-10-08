@@ -1,6 +1,5 @@
 import React from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function AllActors(props) {

@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
-import PropTypes from "prop-types";
 import MovieCard from "../../movie-card/MovieCard";
 
 function Actor(props) {

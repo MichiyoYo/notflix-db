@@ -2,7 +2,6 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 import MovieCard from "../../movie-card/MovieCard";
-import PropTypes from "prop-types";
 
 function Genre(props) {
   const { genreData, movies } = props;

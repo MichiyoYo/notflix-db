@@ -1,0 +1,25 @@
+.login-wrapper {
+  position: relative;
+  .back-btn {
+    width: fit-content;
+    position: absolute;
+    top: 9px !important;
+    right: 9px !important;
+    border-radius: 50% !important;
+    background-image: none;
+    background-color: transparent;
+    border: 2px solid $pink !important;
+    color: $pink;
+    @media screen and (max-width: $small) {
+      top: -23px;
+      right: -2px;
+    }
+  }
+  form {
+    .btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import Router from "../router/Router";
-import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 
 function Main(props) {

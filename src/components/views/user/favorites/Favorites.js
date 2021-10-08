@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 import { Row, Col, Button } from "react-bootstrap";
 import MovieCard from "../../../movie-card/MovieCard";
 import { removeFromFavorites } from "../../../../helpers/movieOps";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { updateUser } from "../../../../actions/actions";
+
+const mapStateToProps = (state) => {
+  const { userData } = state;
+  return { userData };
+};
 
 function Favorites(props) {
   const { userData, movies } = props;
@@ -27,6 +33,7 @@ function Favorites(props) {
           (movie) => movie._id != movieToRemoveId
         );
         movieToRemove.classList.add("d-none");
+        props.updateUser(userData);
       })
       .catch((err) => console.error(err));
   };
@@ -43,7 +50,7 @@ function Favorites(props) {
   filteredMovies.map((movie) => {
     cards.push(
       <Col
-        className="d-flex align-items-center flex-column card-wrap"
+        className="d-flex align-items-center flex-column card-wrap mb-40"
         key={movie._id}
         index={movie._id}
       >
@@ -83,4 +90,4 @@ function Favorites(props) {
   );
 }
 
-export default Favorites;
+export default connect(mapStateToProps, { updateUser })(Favorites);

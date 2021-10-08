@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { updateUser } from "../../../../actions/actions";
 
@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
 };
 
 function UserEdit(props) {
+  const historyData = useHistory();
+
   const [username, setUsername] = useState(props.userData.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(props.userData.Email);
@@ -59,7 +61,10 @@ function UserEdit(props) {
   return (
     <Row className="justify-content-center">
       <Col lg={6} md={8} sm={12} className="login-wrapper">
-        <h2 className="mb-30">Update Profile</h2>
+        <Button onClick={() => historyData.goBack()} className="back-btn">
+          <i className="fas fa-times"></i>
+        </Button>
+        <h2 className="mb-30 mt-10">Update Profile</h2>
         {isValid ? (
           <div>
             <Alert variant="success" show={true}>
@@ -78,7 +83,7 @@ function UserEdit(props) {
         )}
         <Form ref={form} onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Username*</Form.Label>
+            <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
               defaultValue={username}
@@ -121,7 +126,7 @@ function UserEdit(props) {
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicDate">
+          <Form.Group className="mb-5" controlId="formBasicDate">
             <Form.Label>Date of birth</Form.Label>
             <Form.Control
               type="date"

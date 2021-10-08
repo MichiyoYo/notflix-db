@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { Row, Col, Image, Button, Toast } from "react-bootstrap";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Rating from "../../rating/Rating";
 import { addToFavorites, addToWatchlist } from "../../../helpers/movieOps";
 import { connect } from "react-redux";
+import { updateUser } from "../../../actions/actions";
 
 const mapStateToProps = (state) => {
-  return {
-    movies: state.movies,
-  };
+  const { userData } = state;
+  return { userData };
 };
 
 function Movie(props) {
   const historyData = useHistory();
-  const { movieId } = useParams();
-  const { movieData, movies } = props;
+  const { movieData, userData } = props;
 
   const [addedToFavs, setAddedToFavs] = useState(false);
   const [addedToWatchlist, setAddedToWatchlist] = useState(false);
@@ -80,6 +79,7 @@ function Movie(props) {
                 variant="primary mr-20"
                 title="Add to Watchlist"
                 onClick={() => {
+                  props.updateUser(userData);
                   addToWatchlist(
                     userSession.user,
                     userSession.token,
@@ -101,6 +101,7 @@ function Movie(props) {
                 variant="primary"
                 title="Add to Favorites"
                 onClick={() => {
+                  props.updateUser(userData);
                   addToFavorites(
                     userSession.user,
                     userSession.token,
@@ -156,4 +157,4 @@ function Movie(props) {
   );
 }
 
-export default connect(mapStateToProps)(Movie);
+export default connect(mapStateToProps, { updateUser })(Movie);

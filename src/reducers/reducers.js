@@ -7,11 +7,8 @@ import {
   SET_FILTER,
   SET_USERDATA,
   UPDATE_USER,
-  ADD_TO_FAVS,
-  ADD_TO_WATCHLIST,
-  REMOVE_FROM_FAVS,
-  REMOVE_FROM_WATCHLIST,
 } from "../actions/actions";
+
 var _ = require("lodash");
 
 function visibilityFilter(state = "", action) {

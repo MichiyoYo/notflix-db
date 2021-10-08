@@ -7,7 +7,6 @@ import Genre from "../genre/Genre";
 
 function AllGenres(props) {
   const { genres, movies } = props;
-  console.log(movies);
   return (
     <Row className="justify-content-center">
       <h1 className="text-center mb-50">Genres</h1>

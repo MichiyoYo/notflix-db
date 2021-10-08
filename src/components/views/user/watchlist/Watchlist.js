@@ -1,9 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Row, Col, Button } from "react-bootstrap";
-import PropTypes from "prop-types";
 import MovieCard from "../../../movie-card/MovieCard";
 import { removeFromWatchlist } from "../../../../helpers/movieOps";
+import { connect } from "react-redux";
+import { updateUser } from "../../../../actions/actions";
+
+const mapStateToProps = (state) => {
+  const { userData } = state;
+  return { userData };
+};
 
 function Watchlist(props) {
   const { userData, movies } = props;
@@ -26,6 +32,7 @@ function Watchlist(props) {
           (movie) => movie._id != movieToRemoveId
         );
         movieToRemove.classList.add("d-none");
+        props.updateUser(userData);
       })
       .catch((err) => console.error(err));
   };
@@ -42,7 +49,7 @@ function Watchlist(props) {
   filteredMovies.map((movie) => {
     cards.push(
       <Col
-        className="d-flex align-items-center flex-column card-wrap"
+        className="d-flex align-items-center flex-column card-wrap mb-40"
         key={movie._id}
         index={movie._id}
       >
@@ -85,4 +92,4 @@ function Watchlist(props) {
   );
 }
 
-export default Watchlist;
+export default connect(mapStateToProps, { updateUser })(Watchlist);

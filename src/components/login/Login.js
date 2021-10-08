@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
-import PropTypes from "prop-types";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Login(props) {
