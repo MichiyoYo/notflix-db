@@ -5,7 +5,6 @@ import Register from "../register/Register";
 import AllMovies from "../views/all-movies/AllMovies";
 import Home from "../../pages/home/Home";
 import NotFound from "../../pages/not-found/NotFound";
-import About from "../../pages/about/About";
 import Movie from "../views/movie/Movie";
 import Genre from "../views/genre/Genre";
 import AllGenres from "../views/all-genres/AllGenres";
@@ -35,7 +34,6 @@ const Router = (props) => {
         <Route exact path="/register">
           {loggedIn ? <Redirect to="/user" /> : <Register />}
         </Route>
-        <Route exact path="/about" component={About} />
         <Route exact path="/movies">
           {loggedIn ? <AllMovies movies={props.movies} /> : <AccessDenied />}
         </Route>
