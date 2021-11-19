@@ -1,3 +1,5 @@
+![NotFlixDB Demo](demo/notflixdb-demo.gif)
+
 # Overview
 
 NotFlixDB app is the client-side of the web application called "NotFlix".
@@ -9,7 +11,10 @@ The info about movies, directors, actors and genres are pulled from a MongoDB da
 
 [Live Demo](https://notflix-db.netlify.app/)
 
-![NotFlixDB Demo](demo/notflixdb-demo.gif)
+### Login Credentials
+
+Username: `testuser123`
+Password: `testpassword`
 
 ## Tech Stack
 
