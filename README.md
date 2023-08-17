@@ -9,8 +9,6 @@ The info about movies, directors, actors and genres are pulled from a MongoDB da
 
 ## Demo
 
-[Live Demo](https://notflix-db.netlify.app/)
-
 [Case Study](https://cristinalester.rocks/case-study.html)
 
 ### Login Credentials
